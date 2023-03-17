@@ -9,6 +9,7 @@ import 'iconify-icon';
 @Component({
   tag: 'signup-component',
   shadow: true,
+  styleUrl:'form.css'
 })
 export class SignupComponent {
   @Prop() data: any;
@@ -21,7 +22,7 @@ export class SignupComponent {
     
     return (
       <div
-        class={`flex  rounded-xl   border-text-[#8C8C8C] border 'bg-white' `}
+        class={`flex  rounded-xl bg-white  border-text-[#8C8C8C] border 'bg-white' `}
       >
           <div class={`bg-[#070930] min-w-[424px] rounded-lg  px-[50px] pb-[80px] pt-[30px]`}>
             <div class="flex justify-between flex-col gap-20 ">
