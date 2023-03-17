@@ -20,6 +20,9 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface SignupComponent {
+        "data": any;
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +31,15 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLSignupComponentElement extends Components.SignupComponent, HTMLStencilElement {
+    }
+    var HTMLSignupComponentElement: {
+        prototype: HTMLSignupComponentElement;
+        new (): HTMLSignupComponentElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "signup-component": HTMLSignupComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +57,12 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface SignupComponent {
+        "data"?: any;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "signup-component": SignupComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +70,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "signup-component": LocalJSX.SignupComponent & JSXBase.HTMLAttributes<HTMLSignupComponentElement>;
         }
     }
 }
