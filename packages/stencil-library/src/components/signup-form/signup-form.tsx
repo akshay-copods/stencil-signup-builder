@@ -56,9 +56,9 @@ export class SignupComponent {
             </div>
           </div>
         </div>
-        <div class={`flex rounded-lg p-5 flex-col py-20 gap-10  `}>
+        <div class={`flex rounded-lg p-5 flex-col px-20 gap-10  `}>
           <div class="flex  gap-[35px] flex-col">
-            <span>Add Logo</span>
+            {/* <span>Add Logo</span> */}
 
             <div class="flex items-center gap-1.5">
               <h3 class={`font-medium 'text-black'  $ `} id="login-box-heading" tabIndex={0}>

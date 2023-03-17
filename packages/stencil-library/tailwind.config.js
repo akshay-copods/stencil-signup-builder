@@ -30,6 +30,9 @@ module.exports = {
         h3: '1.5rem',
         h4: '1.25rem',
       },
+      borderColor:{
+        100:'#D9D9D9'
+      }
     },
   },
   plugins: [],
