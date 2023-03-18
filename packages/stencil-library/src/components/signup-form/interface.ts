@@ -92,11 +92,29 @@ type Typography = {
   links: LinkTypography;
   normalText: TextTypography;
 };
-
+type SocialLoginButton = {
+  icon: string;
+  name: string;
+};
+type Approval = {
+  name: string;
+  link: string;
+};
+enum LoginMethods {
+  MAGIC_LINK = 'magic_link',
+  MAGIC_CODE = 'magic_code',
+  PASSWORD = 'password',
+}
+type LoginType = {
+  socialLoginTypes: SocialLoginButton[];
+  loginMethods: LoginMethods;
+  approvals: Approval[];
+};
 export type SignupBuilderProps = {
   theme: Theme;
   socialButton: SocialButtonTypes;
   submitButton: SubmitButtonTypes;
   inputField: InputField;
   typography: Typography;
+  loginTypes: LoginType;
 };

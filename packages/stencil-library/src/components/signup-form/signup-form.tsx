@@ -12,27 +12,13 @@ export class SignupComponent {
   @Prop() data: SignupBuilderProps;
   @Watch('data')
   render() {
-    //TODO: replace this when we get social login array
-    const x = [
-      {
-        icon: 'logos:google-icon',
-        name: 'Google',
-      },
-      {
-        icon: 'logos:google-icon',
-        name: 'Google',
-      },
-      {
-        icon: 'logos:google-icon',
-        name: 'Google',
-      },
-    ];
     const theme = this.data.theme;
     const socialButton = this.data.socialButton;
     const submitButton = this.data.submitButton;
     const inputField = this.data.inputField;
     const typography = this.data.typography;
-    console.log({ typography });
+    const loginTypes = this.data.loginTypes;
+    console.log({ loginTypes });
     return (
       <div style={{ fontFamily: typography.fontFamily }} class="flex rounded-xl font-sans w-full h-full">
         {/* Layout Condition will come here */}
@@ -70,7 +56,7 @@ export class SignupComponent {
               <h1 style={{ color: theme.textColor }} class="leading-6 text-xl font-medium">
                 Welcome to Company Name! <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon>
               </h1>
-              {socialButton.position === 'TOP' && (
+              {socialButton.position === 'TOP' && loginTypes.socialLoginTypes.length !== 0 && (
                 <div class="flex flex-col-reverse gap-7">
                   <div class="flex items-center justify-center gap-2">
                     <hr class="flex-1 border-[#D8D8D8]" />
@@ -81,7 +67,7 @@ export class SignupComponent {
                     {socialButton.layout === 'EQUAL_SPLIT' && (
                       <div class="flex items-center gap-3">
                         {/* social login array will come here */}
-                        {x.map(socialLogin => (
+                        {loginTypes.socialLoginTypes.map(socialLogin => (
                           <button
                             style={{
                               backgroundColor: socialButton.styles.defaultState.backgroundColor,
@@ -92,8 +78,8 @@ export class SignupComponent {
                             }}
                             class="flex flex-1 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
                           >
-                            <iconify-icon icon="logos:google-icon"></iconify-icon>
-                            {x.length > 3 ? null : socialLogin.name}
+                            <iconify-icon icon={socialLogin.icon}></iconify-icon>
+                            {loginTypes.socialLoginTypes.length > 3 ? null : socialLogin.name}
                           </button>
                         ))}
                       </div>
@@ -101,7 +87,7 @@ export class SignupComponent {
                     {/* One primary other logos */}
                     {socialButton.layout === 'ONE_PRIMARY' && (
                       <div class="flex items-center gap-3">
-                        {x.map((socialLogin, i) =>
+                        {loginTypes.socialLoginTypes.map((socialLogin, i) =>
                           i == 0 ? (
                             <button
                               style={{
@@ -113,11 +99,11 @@ export class SignupComponent {
                               }}
                               class="flex flex-1 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
                             >
-                              <iconify-icon icon="logos:google-icon"></iconify-icon>
+                              <iconify-icon icon={socialLogin.icon}></iconify-icon>
                               {socialLogin.name}
                             </button>
                           ) : (
-                            <iconify-icon class="text-lg" icon="logos:google-icon"></iconify-icon>
+                            <iconify-icon class="text-lg" icon={socialLogin.icon}></iconify-icon>
                           ),
                         )}
                       </div>
@@ -154,26 +140,29 @@ export class SignupComponent {
                       class="border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
                     />
                   </label>
-                  <label htmlFor="passowrd" class="flex flex-col gap-2">
-                    <span style={{ color: inputField.label.fontColor, fontSize: inputField.label.fontSize, fontWeight: inputField.label.fontWeight }} class="leading-3">
-                      Password
-                    </span>
-                    <div class="flex relative">
-                      <input
-                        style={{
-                          borderRadius: `${inputField.defaultState.box.borderRadius.toString()}px`,
-                          borderWidth: `${inputField.defaultState.box.borderSize.toString()}px`,
-                          backgroundColor: inputField.defaultState.backgroundColor,
-                          color: inputField.defaultState.fontColor,
-                          fontSize: inputField.defaultState.fontSize,
-                          fontWeight: inputField.defaultState.fontWeight,
-                        }}
-                        type="text"
-                        class="w-full border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
-                      />
-                      <iconify-icon icon="ant-design:eye-outlined" class="absolute right-3 top-3 text-[#00000073]" width="16" height="16"></iconify-icon>
-                    </div>
-                  </label>
+                  {loginTypes.loginMethods === 'password' && (
+                    <label htmlFor="passowrd" class="flex flex-col gap-2">
+                      <span style={{ color: inputField.label.fontColor, fontSize: inputField.label.fontSize, fontWeight: inputField.label.fontWeight }} class="leading-3">
+                        Password
+                      </span>
+
+                      <div class="flex relative">
+                        <input
+                          style={{
+                            borderRadius: `${inputField.defaultState.box.borderRadius.toString()}px`,
+                            borderWidth: `${inputField.defaultState.box.borderSize.toString()}px`,
+                            backgroundColor: inputField.defaultState.backgroundColor,
+                            color: inputField.defaultState.fontColor,
+                            fontSize: inputField.defaultState.fontSize,
+                            fontWeight: inputField.defaultState.fontWeight,
+                          }}
+                          type="text"
+                          class="w-full border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
+                        />
+                        <iconify-icon icon="ant-design:eye-outlined" class="absolute right-3 top-3 text-[#00000073]" width="16" height="16"></iconify-icon>
+                      </div>
+                    </label>
+                  )}
                 </div>
 
                 <div class="flex flex-col gap-1">
@@ -190,26 +179,23 @@ export class SignupComponent {
                     Continue
                   </button>
                   <span class="text-xs leading-6 text-[#00000073]">
-                    By continuing, you agree to the{' '}
-                    <span
-                      style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400', textDecoration: typography.links.style }}
-                      class="text-[#2f54eb] opacity-100"
-                    >
-                      Terms of Service
-                    </span>{' '}
-                    and{' '}
-                    <span
-                      style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400', textDecoration: typography.links.style }}
-                      class="text-[#2f54eb]"
-                    >
-                      Privacy Policy
-                    </span>
+                    By continuing, you agree to the
+                    {loginTypes.approvals.map((approval, i) => (
+                      <span>
+                        <span
+                          style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400', textDecoration: typography.links.style }}
+                          class="text-[#2f54eb] opacity-100"
+                        >
+                          {' ' + approval.name}
+                        </span>
+                        {loginTypes.approvals.length > 1 && i !== loginTypes.approvals.length - 1 ? ' and ' : null}
+                      </span>
+                    ))}
                   </span>
                 </div>
               </div>
-              -
             </div>
-            {socialButton.position === 'BOTTOM' && (
+            {socialButton.position === 'BOTTOM' && loginTypes.socialLoginTypes.length !== 0 && (
               <div class="flex flex-col gap-7">
                 <div class="flex items-center justify-center gap-2">
                   <hr class="flex-1 border-[#D8D8D8]" />
@@ -220,7 +206,7 @@ export class SignupComponent {
                   {socialButton.layout === 'EQUAL_SPLIT' && (
                     <div class="flex items-center gap-3">
                       {/* social login array will come here */}
-                      {x.map(socialLogin => (
+                      {loginTypes.socialLoginTypes.map(socialLogin => (
                         <button
                           style={{
                             backgroundColor: socialButton.styles.defaultState.backgroundColor,
@@ -231,8 +217,8 @@ export class SignupComponent {
                           }}
                           class="flex flex-1 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
                         >
-                          <iconify-icon icon="logos:google-icon"></iconify-icon>
-                          {x.length > 3 ? null : socialLogin.name}
+                          <iconify-icon icon={socialLogin.icon}></iconify-icon>
+                          {loginTypes.socialLoginTypes.length > 3 ? null : socialLogin.name}
                         </button>
                       ))}
                     </div>
@@ -240,7 +226,7 @@ export class SignupComponent {
                   {/* One primary other logos */}
                   {socialButton.layout === 'ONE_PRIMARY' && (
                     <div class="flex items-center gap-3">
-                      {x.map((socialLogin, i) =>
+                      {loginTypes.socialLoginTypes.map((socialLogin, i) =>
                         i == 0 ? (
                           <button
                             style={{
@@ -252,7 +238,7 @@ export class SignupComponent {
                             }}
                             class="flex flex-1 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
                           >
-                            <iconify-icon icon="logos:google-icon"></iconify-icon>
+                            <iconify-icon icon={socialLogin.icon}></iconify-icon>
                             {socialLogin.name}
                           </button>
                         ) : (
@@ -261,16 +247,16 @@ export class SignupComponent {
                       )}
                     </div>
                   )}
-                  <span class="text-center text-sm leading-6">
-                    Already have an account?{' '}
-                    <span
-                      style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400', textDecoration: typography.links.style }}
-                      class="rounded text-[#2F54EB]"
-                    >
-                      Log in
-                    </span>
-                  </span>
                 </div>
+                <span class="text-center text-sm leading-6">
+                  Already have an account?{' '}
+                  <span
+                    style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400', textDecoration: typography.links.style }}
+                    class="rounded text-[#2F54EB]"
+                  >
+                    Log in
+                  </span>
+                </span>
               </div>
             )}
           </div>
