@@ -8,6 +8,14 @@ enum SocialMediaButtonLayout {
   'ONE_PRIMARY' = 'ONE_PRIMARY',
 }
 
+enum FontFamily {
+  Roboto = "'Roboto', sans-serif",
+  OpenSans = 'Open Sans',
+  Lato = 'Lato',
+  Montserrat = 'Montserrat',
+  Inter = "'Open Sans', sans-serif",
+}
+
 type InputLabelTheme = {
   fontColor: string;
   fontSize: string;
@@ -46,6 +54,7 @@ type Theme = {
 };
 
 type SocialButtonTypes = { position: Position; layout: SocialMediaButtonLayout; styles: ButtonStates };
+
 type SubmitButtonTypes = { styles: ButtonStates };
 
 type ButtonStates = {
@@ -65,9 +74,29 @@ type InputField = {
   focusState: InputStateTheme;
 };
 
+type TextTypography = {
+  fontSize: string;
+  Bold: boolean;
+};
+
+type LinkTypography = {
+  fontSize: string;
+  Bold: boolean;
+  style: string;
+};
+
+type Typography = {
+  fontFamily: FontFamily;
+  title: TextTypography;
+  subTitle: TextTypography;
+  links: LinkTypography;
+  normalText: TextTypography;
+};
+
 export type SignupBuilderProps = {
   theme: Theme;
   socialButton: SocialButtonTypes;
   submitButton: SubmitButtonTypes;
   inputField: InputField;
+  typography: Typography;
 };
