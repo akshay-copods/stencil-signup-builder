@@ -1,111 +1,90 @@
-import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, Watch } from '@stencil/core';
 import 'iconify-icon';
-// import addCircleOutline from '../../AddCircleOutline.svg';
-// import addLogo from '../../addLogo.svg';
-// import avtar from '../../Avatar.svg';
-// import editIcon from '../../Edit.svg';
-// import starLogo from '../../star.svg';
+
 //@ts-ignore
 @Component({
   tag: 'signup-component',
   shadow: true,
   styleUrl: 'form.css',
 })
+
 export class SignupComponent {
   @Prop() data: any;
-  @State() email: string = '';
   @Watch('data')
+
   render() {
     return (
-      <div class={`flex  rounded-xl bg-white  border-text-[#8C8C8C] border 'bg-white' `}>
-        <div class={`bg-[#070930] min-w-[424px] rounded-lg  px-[50px] pb-[80px] pt-[30px]`}>
-          <div class="flex justify-between flex-col gap-20 ">
-            <div class="flex flex-col gap-20 ">
-              <div class={` flex justify-center right`}>
-                <div class="flex items-center gap-2">
-                  <span class="font-medium text-white">Add Company Logo</span>
-                </div>
+      <div class="flex rounded-xl font-sans w-[1044px] h-[652px]">
+        <div class="bg-[#120338] w-[424px] rounded-r-lg">
+          <div class="flex flex-col gap-40 pt-9 pb-16 px-16">
+            <div class="flex flex-col gap-20">
+              <div class="flex gap-2">
+                <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon>
+                <span class="text-[#FAFAFA] leading-6 font-medium">Add Company Logo</span>
               </div>
-              <div class="max-w-[280px] gap-2 flex flex-col">
-                <h1 class={`text-3xl font-medium  text-white `}>Start your journey with us.</h1>
-
-                <span class={`text-white  'underline underline-offset-8 outline-none transition-all duration-300 ease-in-out'}`}>
+              <div class="flex flex-col gap-2">
+                <h1 class="font-medium text-[#FAFAFA] leading-10 text-3xl">
+                  Start your journey with us. <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon>
+                </h1>
+                <span class="text-sm text-[#FAFAFA] leading-5">
                   Discover the world's best community of freelancers ad business owners.{' '}
+                  <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] mb-[-4px]" width="16" height="16"></iconify-icon>
                 </span>
               </div>
             </div>
-
-            <div class="flex flex-col gap-1 max-w-[390px]">
-              <div class="flex justify-end  gap-1">
-                {/* <img src={starLogo} alt="" /> */}
-                <span class="text-[#1890FF]  text-xs ">View Custom Layouts</span>
+            <div class="flex flex-col gap-1">
+              <div class="rounded-lg bg-[#0B0E49] text-[#FAFAFA] px-8 pt-7 pb-16 text-xs leading-5">
+                <span class="inline-block">Discover the world's best community of freelancers ad business owners.</span>
               </div>
-
-              <div class="border-text-none rounded-2xl bg-[#252BA9] flex flex-col gap-6 p-5">
-                <span class={`text-white text-xs`}>
-                  "This SAAS product has made my life so much easier! It's intuitive, efficient, and has all the features I need to run my business smoothly."
-                </span>
-                <div class="flex gap-2 items-center">
-                  {/* <img src={avtar} alt="" /> */}
-                  <div>
-                    <h4 class="text-white">Arun Raj</h4>
-                    <span class="text-white">Senior Product Manger @ABSoftwares</span>
-                  </div>
-                </div>
+              <div class="flex ml-auto gap-1">
+                <iconify-icon icon="ant-design:star-outlined" class="text-[#FAFAFA]" width="12" height="12"></iconify-icon>
+                <span class="text-[#FAFAFA] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
               </div>
             </div>
           </div>
         </div>
-        <div class={`flex rounded-lg p-5 flex-col px-20 gap-10  `}>
-          <div class="flex  gap-[35px] flex-col">
-            {/* <span>Add Logo</span> */}
-
-            <div class="flex items-center gap-1.5">
-              <h3 class={`font-medium 'text-black'  $ `} id="login-box-heading" tabIndex={0}>
-                Welcome to Company Name!
-              </h3>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-9">
-            <div class={`flex gap-8 flex-col`}>
-              <div class={`flex flex-col gap-7`}>
-                <div class="flex flex-col gap-2">
-                  <label htmlFor="">Email</label>
-                  <input class={`border-[#D9D9D9] border-2 px-3 py-2 rounded-sm`} placeholder="Enter Your Email" type="text" required={true} />
+        <div class="bg-white flex-1 p-20">
+          <div class="flex flex-col gap-8">
+            <div class="flex flex-col gap-10">
+              <h1 class="leading-6 text-xl font-medium">
+                Welcome to Company Name! <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon>
+              </h1>
+              <div class="flex flex-col gap-9">
+                <div class="flex flex-col gap-6">
+                  <label htmlFor="email" class="flex flex-col gap-2">
+                    <span class="text-sm leading-3 text-[#00000099]">Email</span>
+                    <input type="text" name="email" class="border border-[#D9D9D9] px-3 py-2 rounded-sm leading-6 text-base text-[rgba(0, 0, 0, 0.85)]" />
+                  </label>
+                  <label htmlFor="passowrd" class="flex flex-col gap-2">
+                    <span class="text-sm leading-3 text-[#00000099]">Password</span>
+                    <div class="flex relative">
+                      <input type="text" class="border w-full border-[#D9D9D9] px-3 py-2 rounded-sm leading-6 text-base text-[rgba(0, 0, 0, 0.85)]" />
+                      <iconify-icon icon="ant-design:eye-outlined" class="absolute right-3 top-3 text-[#00000073]" width="16" height="16"></iconify-icon>
+                    </div>
+                  </label>
                 </div>
-                <div class="flex flex-col gap-2">
-                  <label htmlFor="">Password</label>
-                  <div class="relative">
-                    <input class={`border-[#D9D9D9] w-full border-2 px-3 py-2  rounded-sm`} placeholder="Enter your password" />
-                    <button type="button" class="absolute text-[#00000073] right-3 top-[11px]"></button>
-                  </div>
-                </div>
-                <button tabIndex={0} type="submit" class={`bg-[#070930] max-h-12 rounded-sm py-2 text-center items-center text-white`}>
-                  Continue
-                </button>
                 <div class="flex flex-col gap-1">
-                  <span class={` flex-wrap flex items-center gap-1 text-[#00000073] text-black`}>
-                    <span>By continuing, you agree to the</span>
-                    <a href="/">Terms of Service</a>
-                    <span class="text-[#00000073] text-xs">and</span>
-                    {''}
-                    <a href="/">Privacy Policy</a>
+                  <button class="bg-[#141414] text-white border border-[#9254DE] px-4 py-2 rounded-sm">Continue</button>
+                  <span class="text-xs leading-6 text-[#00000073]">
+                    By continuing, you agree to the <span class="text-[#2f54eb] opacity-100">Terms of Service</span> and <span class="text-[#2f54eb]">Privacy Policy</span>
                   </span>
                 </div>
               </div>
-              <div class={`flex gap-9 flex-col`}>
-                <div class="flex justify-between items-center gap-2">
-                  <hr class="h-px w-full bg-gray-300" /> <div class={`text-xs w-full text-gray-600 text-center  `}>OR SIGNUP WITH</div> <hr class="h-px w-full bg-gray-300" />
-                </div>
-
-                <div class={`flex flex-row-reverse gap-3 justify-center items-center`}></div>
-              </div>
             </div>
-
-            <div class="flex items-center justify-center gap-0.5">
-              <span class={`text-sm text-black `}>Already have an account?</span>
-              <a href="/">Log In</a>
+            <div class="flex flex-col gap-7">
+              <div class="flex items-center justify-center gap-2">
+                <hr class="flex-1 border-[#D8D8D8]" />
+                <span class="w-32 text-xs text-center text-[#00000073]">OR SIGNUP WITH</span>
+                <hr class="flex-1 border-[#D8D8D8]" />
+              </div>
+              <div class="flex flex-col gap-3">
+                <button class="bg-white flex items-center justify-center gap-3 text-black border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)]  px-4 py-2 rounded-sm">
+                  <iconify-icon icon="logos:google-icon"></iconify-icon>Google
+                </button>
+                <span class="text-center text-sm leading-6">
+                  Already have an account? <span class="rounded text-[#2F54EB]">Log in</span>
+                </span>
+              </div>
             </div>
           </div>
         </div>
