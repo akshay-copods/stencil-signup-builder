@@ -34,7 +34,7 @@ export class SignupComponent {
     const typography = this.data.typography;
     console.log({ typography });
     return (
-      <div class="flex rounded-xl font-sans w-full h-full">
+      <div style={{fontFamily:typography.fontFamily}} class="flex rounded-xl font-sans w-full h-full">
         {/* Layout Condition will come here */}
         <div class="bg-[#120338] w-[424px] rounded-r-lg">
           <div class="flex flex-col gap-40 pt-9 pb-16 px-16">
