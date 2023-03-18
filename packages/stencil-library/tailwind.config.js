@@ -23,6 +23,9 @@ module.exports = {
           400: '#00000073',
           600: '#000000D9',
         },
+        customBlue: {
+          700: '#120338',
+        },
       },
       fontSize: {
         h1: '2.375rem',
@@ -30,9 +33,12 @@ module.exports = {
         h3: '1.5rem',
         h4: '1.25rem',
       },
-      borderColor:{
-        100:'#D9D9D9'
-      }
+      borderColor: {
+        100: '#D9D9D9',
+      },
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+      },
     },
   },
   plugins: [],
