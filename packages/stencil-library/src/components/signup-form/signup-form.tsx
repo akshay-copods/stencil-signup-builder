@@ -57,7 +57,7 @@ export class SignupComponent {
                   <iconify-icon class="text-blue-600" icon="carbon:edit" width="15" height="15"></iconify-icon>
                 </div>
                 <div>
-                  <span class={`text-white  'underline underline-offset-8 outline-none transition-all duration-300 ease-in-out'}`}>
+                  <span class={`text-white  underline underline-offset-8 outline-none transition-all duration-300 ease-in-out'}`}>
                     Discover the world's best community of freelancers ad business owners.{' '}
                   </span>
                   <iconify-icon class="text-blue-600" icon="carbon:edit" width="15" height="15"></iconify-icon>
