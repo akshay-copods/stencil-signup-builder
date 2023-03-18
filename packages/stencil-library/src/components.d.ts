@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { SignupBuilderProps } from "./components/signup-form/interface";
+export { SignupBuilderProps } from "./components/signup-form/interface";
 export namespace Components {
     interface MyComponent {
         /**
@@ -21,7 +23,7 @@ export namespace Components {
         "middle": string;
     }
     interface SignupComponent {
-        "data": any;
+        "data": SignupBuilderProps;
     }
 }
 declare global {
@@ -58,7 +60,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface SignupComponent {
-        "data"?: any;
+        "data"?: SignupBuilderProps;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
