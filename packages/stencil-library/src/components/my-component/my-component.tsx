@@ -1,6 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
 import 'iconify-icon';
-import { format } from 'util';
 
 @Component({
   tag: 'my-component',
@@ -23,11 +22,7 @@ export class MyComponent {
    */
   @Prop() last: string;
 
-  private getText(): string {
-    return format(this.first, this.middle, this.last);
-  }
-
   render() {
-    return <div class="bg-red-600 text-2xl">Hello, World! I'm {this.getText()}</div>;
+    return <div class="bg-red-600 text-2xl">Hello, World! I'm {this.first}</div>;
   }
 }
