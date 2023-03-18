@@ -16,15 +16,41 @@ export class SignupComponent {
   @State() email: string = '';
   @Watch('data')
   render() {
+    // const logos = [
+    //   {
+    //     icon: 'fluent:image-28-filled',
+    //     link: '',
+    //   },
+    //   {
+    //     icon: 'fluent:image-28-filled',
+    //     link: '',
+    //   },
+    //   {
+    //     icon: 'fluent:image-28-filled',
+    //     link: '',
+    //   },
+    //   {
+    //     icon: 'fluent:image-28-filled',
+    //     link: '',
+    //   },
+    //   {
+    //     icon: 'fluent:image-28-filled',
+    //     link: '',
+    //   },
+    //   {
+    //     icon: 'fluent:image-28-filled',
+    //     link: '',
+    //   },
+    // ];
     return (
       <div class={`flex  rounded-xl bg-white w-fit font  border-text-[#8C8C8C] border  `}>
         <div class={`bg-[#070930] min-w-[424px] rounded-lg  px-[50px] pb-[80px] pt-[30px]`}>
-          <div class="flex justify-between flex-col gap-20 ">
-            <div class="flex flex-col gap-20 ">
-              <div class="flex items-center gap-2">
-                <iconify-icon class="text-white" icon="material-symbols:add-circle-outline" width="28" height="28"></iconify-icon>
-                <span class="font-medium text-white">Add Company Logo</span>
-              </div>
+          <div class="flex gap-20 flex-col h-full ">
+            <div class="flex items-center gap-2">
+              <iconify-icon class="text-white" icon="material-symbols:add-circle-outline" width="28" height="28"></iconify-icon>
+              <span class="font-medium text-white">Add Company Logo</span>
+            </div>
+            <div class={`flex flex-col h-full justify-between`}>
               <div class="max-w-[280px] gap-2 flex flex-col">
                 <div>
                   <h1 class={`text-3xl font-medium  text-white `}>Start your journey with us.</h1>{' '}
@@ -37,26 +63,33 @@ export class SignupComponent {
                   <iconify-icon class="text-blue-600" icon="carbon:edit" width="15" height="15"></iconify-icon>
                 </div>
               </div>
-            </div>
+              <div class="flex flex-col gap-1 max-w-[390px]">
+                <div class="flex justify-end  gap-1">
+                  {/* <img src={starLogo} alt="" /> */}
+                  <span class="text-[#1890FF]  text-xs ">View Custom Layouts</span>
+                </div>
 
-            <div class="flex flex-col gap-1 max-w-[390px]">
-              <div class="flex justify-end  gap-1">
-                {/* <img src={starLogo} alt="" /> */}
-                <span class="text-[#1890FF]  text-xs ">View Custom Layouts</span>
-              </div>
-
-              <div class="border-text-none rounded-2xl bg-[#252BA9] flex flex-col gap-6 p-5">
-                <span class={`text-white text-xs`}>
-                  "This SAAS product has made my life so much easier! It's intuitive, efficient, and has all the features I need to run my business smoothly."
-                </span>
-                <div class="flex gap-2 items-center">
-                  {/* <img src={avtar} alt="" /> */}
-                  <div>
-                    <h4 class="text-white">Arun Raj</h4>
-                    <span class="text-white">Senior Product Manger @ABSoftwares</span>
+                <div class="border-text-none rounded-2xl bg-[#252BA9] flex flex-col gap-6 p-5">
+                  <span class={`text-white text-xs`}>
+                    "This SAAS product has made my life so much easier! It's intuitive, efficient, and has all the features I need to run my business smoothly."
+                  </span>
+                  <div class="flex gap-2 items-center">
+                    {/* <img src={avtar} alt="" /> */}
+                    <div>
+                      <h4 class="text-white">Arun Raj</h4>
+                      <span class="text-white">Senior Product Manger @ABSoftwares</span>
+                    </div>
                   </div>
                 </div>
               </div>
+              {/* {logos section will be shown as per layout selection} */}
+              {/* <div class='grid gap-8 grid-cols-6'>{logos.map((data)=>{
+                return(
+                  <div class='grid justify-center col-span-2'>
+                    <iconify-icon class="text-white" icon={data.icon} width="50" height="50"></iconify-icon>
+                  </div>
+                )
+              })}</div> */}
             </div>
           </div>
         </div>
