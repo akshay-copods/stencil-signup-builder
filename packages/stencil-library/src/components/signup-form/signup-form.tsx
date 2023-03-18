@@ -34,7 +34,7 @@ export class SignupComponent {
     const typography = this.data.typography;
     console.log({ typography });
     return (
-      <div style={{fontFamily:typography.fontFamily}} class="flex rounded-xl font-sans w-full h-full">
+      <div style={{ fontFamily: typography.fontFamily }} class="flex rounded-xl font-sans w-full h-full">
         {/* Layout Condition will come here */}
         <div class="bg-[#120338] w-[424px] rounded-r-lg">
           <div class="flex flex-col gap-40 pt-9 pb-16 px-16">
@@ -191,11 +191,17 @@ export class SignupComponent {
                   </button>
                   <span class="text-xs leading-6 text-[#00000073]">
                     By continuing, you agree to the{' '}
-                    <span style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400',textDecoration: typography.links.style }} class="text-[#2f54eb] opacity-100">
+                    <span
+                      style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400', textDecoration: typography.links.style }}
+                      class="text-[#2f54eb] opacity-100"
+                    >
                       Terms of Service
                     </span>{' '}
                     and{' '}
-                    <span style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400',textDecoration: typography.links.style }} class="text-[#2f54eb]">
+                    <span
+                      style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400', textDecoration: typography.links.style }}
+                      class="text-[#2f54eb]"
+                    >
                       Privacy Policy
                     </span>
                   </span>
@@ -257,7 +263,10 @@ export class SignupComponent {
                   )}
                   <span class="text-center text-sm leading-6">
                     Already have an account?{' '}
-                    <span style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400',textDecoration: typography.links.style }} class="rounded text-[#2F54EB]">
+                    <span
+                      style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400', textDecoration: typography.links.style }}
+                      class="rounded text-[#2F54EB]"
+                    >
                       Log in
                     </span>
                   </span>
