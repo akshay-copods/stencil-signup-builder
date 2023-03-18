@@ -7,14 +7,12 @@ import 'iconify-icon';
   shadow: true,
   styleUrl: 'form.css',
 })
-
 export class SignupComponent {
   @Prop() data: any;
   @Watch('data')
-
   render() {
     return (
-      <div class="flex rounded-xl font-sans w-[1044px] h-[652px]">
+      <div class="flex rounded-xl font-sans w-full h-full">
         <div class="bg-[#120338] w-[424px] rounded-r-lg">
           <div class="flex flex-col gap-40 pt-9 pb-16 px-16">
             <div class="flex flex-col gap-20">
