@@ -21,6 +21,7 @@ module.exports = {
         },
         customBlack: {
           400: '#00000073',
+          500:'#00000099',
           600: '#000000D9',
         },
       },
@@ -32,6 +33,10 @@ module.exports = {
       },
       borderColor:{
         100:'#D9D9D9'
+      }
+      ,
+      padding:{
+        15:'60px'
       }
     },
   },

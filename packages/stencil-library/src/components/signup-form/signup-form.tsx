@@ -17,14 +17,13 @@ export class SignupComponent {
   @Watch('data')
   render() {
     return (
-      <div class={`flex  rounded-xl bg-white  border-text-[#8C8C8C] border 'bg-white' `}>
+      <div class={`flex  rounded-xl bg-white w-fit font  border-text-[#8C8C8C] border  `}>
         <div class={`bg-[#070930] min-w-[424px] rounded-lg  px-[50px] pb-[80px] pt-[30px]`}>
           <div class="flex justify-between flex-col gap-20 ">
             <div class="flex flex-col gap-20 ">
-              <div class={` flex justify-center right`}>
-                <div class="flex items-center gap-2">
-                  <span class="font-medium text-white">Add Company Logo</span>
-                </div>
+              <div class="flex items-center gap-2">
+                <iconify-icon class="text-white" icon="material-symbols:add-circle-outline" width="28" height="28"></iconify-icon>
+                <span class="font-medium text-white">Add Company Logo</span>
               </div>
               <div class="max-w-[280px] gap-2 flex flex-col">
                 <h1 class={`text-3xl font-medium  text-white `}>Start your journey with us.</h1>
@@ -56,12 +55,12 @@ export class SignupComponent {
             </div>
           </div>
         </div>
-        <div class={`flex rounded-lg p-5 flex-col px-20 gap-10  `}>
+        <div class={`flex rounded-lg  flex-col pl-20 pr-[60px] pt-20 pb-24 gap-10  `}>
           <div class="flex  gap-[35px] flex-col">
             {/* <span>Add Logo</span> */}
 
             <div class="flex items-center gap-1.5">
-              <h3 class={`font-medium 'text-black'  $ `} id="login-box-heading" tabIndex={0}>
+              <h3 class='font-medium text-black text-xl' id="login-box-heading" tabIndex={0}>
                 Welcome to Company Name!
               </h3>
             </div>
@@ -71,26 +70,26 @@ export class SignupComponent {
             <div class={`flex gap-8 flex-col`}>
               <div class={`flex flex-col gap-7`}>
                 <div class="flex flex-col gap-2">
-                  <label htmlFor="">Email</label>
+                  <label class='text-sm text-customBlack-500' htmlFor="">Email</label>
                   <input class={`border-[#D9D9D9] border-2 px-3 py-2 rounded-sm`} placeholder="Enter Your Email" type="text" required={true} />
                 </div>
                 <div class="flex flex-col gap-2">
-                  <label htmlFor="">Password</label>
+                  <label class='text-sm text-customBlack-500' htmlFor="">Password</label>
                   <div class="relative">
                     <input class={`border-[#D9D9D9] w-full border-2 px-3 py-2  rounded-sm`} placeholder="Enter your password" />
-                    <button type="button" class="absolute text-[#00000073] right-3 top-[11px]"></button>
+                    <button type="button" class="absolute text-customBlack-400 right-3 top-[11px]"></button>
                   </div>
                 </div>
                 <button tabIndex={0} type="submit" class={`bg-[#070930] max-h-12 rounded-sm py-2 text-center items-center text-white`}>
                   Continue
                 </button>
                 <div class="flex flex-col gap-1">
-                  <span class={` flex-wrap flex items-center gap-1 text-[#00000073] text-black`}>
-                    <span>By continuing, you agree to the</span>
-                    <a href="/">Terms of Service</a>
-                    <span class="text-[#00000073] text-xs">and</span>
+                  <span class={` flex-wrap flex items-center gap-1  text-black`}>
+                    <span class='text-xs text-customBlack-400 '>By continuing, you agree to the</span>
+                    <a class='text-blue-600 text-xs' href="/">Terms of Service</a>
+                    <span class="text-customBlack-400 text-xs">and</span>
                     {''}
-                    <a href="/">Privacy Policy</a>
+                    <a class='text-blue-600 text-xs' href="/">Privacy Policy</a>
                   </span>
                 </div>
               </div>
@@ -105,7 +104,7 @@ export class SignupComponent {
 
             <div class="flex items-center justify-center gap-0.5">
               <span class={`text-sm text-black `}>Already have an account?</span>
-              <a href="/">Log In</a>
+              <a class='text-sm text-blue-600' href="/">Log In</a>
             </div>
           </div>
         </div>
