@@ -76,7 +76,7 @@ export class SignupComponent {
                               fontWeight: socialButton.styles.defaultState.fontWeight,
                               fontSize: socialButton.styles.defaultState.fontSize,
                             }}
-                            class="flex flex-1 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
+                            class="flex flex-1 h-9 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
                           >
                             <iconify-icon icon={socialLogin.icon}></iconify-icon>
                             {loginTypes.socialLoginTypes.length > 3 ? null : socialLogin.name}
@@ -97,7 +97,7 @@ export class SignupComponent {
                                 fontWeight: socialButton.styles.defaultState.fontWeight,
                                 fontSize: socialButton.styles.defaultState.fontSize,
                               }}
-                              class="flex flex-1 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
+                              class="flex flex-1 h-9 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
                             >
                               <iconify-icon icon={socialLogin.icon}></iconify-icon>
                               {socialLogin.name}
@@ -215,7 +215,7 @@ export class SignupComponent {
                             fontWeight: socialButton.styles.defaultState.fontWeight,
                             fontSize: socialButton.styles.defaultState.fontSize,
                           }}
-                          class="flex flex-1 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
+                          class="flex flex-1 h-9 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
                         >
                           <iconify-icon icon={socialLogin.icon}></iconify-icon>
                           {loginTypes.socialLoginTypes.length > 3 ? null : socialLogin.name}
@@ -236,7 +236,7 @@ export class SignupComponent {
                               fontWeight: socialButton.styles.defaultState.fontWeight,
                               fontSize: socialButton.styles.defaultState.fontSize,
                             }}
-                            class="flex flex-1 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
+                            class="flex flex-1 h-9 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
                           >
                             <iconify-icon icon={socialLogin.icon}></iconify-icon>
                             {socialLogin.name}
