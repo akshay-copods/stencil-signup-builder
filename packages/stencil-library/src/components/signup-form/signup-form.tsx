@@ -26,11 +26,16 @@ export class SignupComponent {
                 <span class="font-medium text-white">Add Company Logo</span>
               </div>
               <div class="max-w-[280px] gap-2 flex flex-col">
-                <h1 class={`text-3xl font-medium  text-white `}>Start your journey with us.</h1>
-
-                <span class={`text-white  'underline underline-offset-8 outline-none transition-all duration-300 ease-in-out'}`}>
-                  Discover the world's best community of freelancers ad business owners.{' '}
-                </span>
+                <div>
+                  <h1 class={`text-3xl font-medium  text-white `}>Start your journey with us.</h1>{' '}
+                  <iconify-icon class="text-blue-600" icon="carbon:edit" width="15" height="15"></iconify-icon>
+                </div>
+                <div>
+                  <span class={`text-white  'underline underline-offset-8 outline-none transition-all duration-300 ease-in-out'}`}>
+                    Discover the world's best community of freelancers ad business owners.{' '}
+                  </span>
+                  <iconify-icon class="text-blue-600" icon="carbon:edit" width="15" height="15"></iconify-icon>
+                </div>
               </div>
             </div>
 
@@ -60,9 +65,10 @@ export class SignupComponent {
             {/* <span>Add Logo</span> */}
 
             <div class="flex items-center gap-1.5">
-              <h3 class='font-medium text-black text-xl' id="login-box-heading" tabIndex={0}>
+              <h3 class="font-medium text-black text-xl" id="login-box-heading" contentEditable={true} tabIndex={0}>
                 Welcome to Company Name!
               </h3>
+              <iconify-icon class="text-blue-600" icon="carbon:edit" width="15" height="15"></iconify-icon>
             </div>
           </div>
 
@@ -70,11 +76,15 @@ export class SignupComponent {
             <div class={`flex gap-8 flex-col`}>
               <div class={`flex flex-col gap-7`}>
                 <div class="flex flex-col gap-2">
-                  <label class='text-sm text-customBlack-500' htmlFor="">Email</label>
+                  <label class="text-sm text-customBlack-500" htmlFor="">
+                    Email
+                  </label>
                   <input class={`border-[#D9D9D9] border-2 px-3 py-2 rounded-sm`} placeholder="Enter Your Email" type="text" required={true} />
                 </div>
                 <div class="flex flex-col gap-2">
-                  <label class='text-sm text-customBlack-500' htmlFor="">Password</label>
+                  <label class="text-sm text-customBlack-500" htmlFor="">
+                    Password
+                  </label>
                   <div class="relative">
                     <input class={`border-[#D9D9D9] w-full border-2 px-3 py-2  rounded-sm`} placeholder="Enter your password" />
                     <button type="button" class="absolute text-customBlack-400 right-3 top-[11px]"></button>
@@ -85,11 +95,15 @@ export class SignupComponent {
                 </button>
                 <div class="flex flex-col gap-1">
                   <span class={` flex-wrap flex items-center gap-1  text-black`}>
-                    <span class='text-xs text-customBlack-400 '>By continuing, you agree to the</span>
-                    <a class='text-blue-600 text-xs' href="/">Terms of Service</a>
+                    <span class="text-xs text-customBlack-400 ">By continuing, you agree to the</span>
+                    <a class="text-blue-600 text-xs" href="/">
+                      Terms of Service
+                    </a>
                     <span class="text-customBlack-400 text-xs">and</span>
                     {''}
-                    <a class='text-blue-600 text-xs' href="/">Privacy Policy</a>
+                    <a class="text-blue-600 text-xs" href="/">
+                      Privacy Policy
+                    </a>
                   </span>
                 </div>
               </div>
@@ -104,7 +118,9 @@ export class SignupComponent {
 
             <div class="flex items-center justify-center gap-0.5">
               <span class={`text-sm text-black `}>Already have an account?</span>
-              <a class='text-sm text-blue-600' href="/">Log In</a>
+              <a class="text-sm text-blue-600" href="/">
+                Log In
+              </a>
             </div>
           </div>
         </div>
