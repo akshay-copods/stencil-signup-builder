@@ -34,26 +34,36 @@ export class MyComponent {
           <div class="flex flex-col gap-40 pt-9 pb-16 px-16">
             <div class="flex flex-col gap-20">
               <div class="flex gap-2">
-                <img class="rounded-full" src="https://picsum.photos/27" alt="https://picsum.photos/27" />
+                <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon>
                 <span class="text-[#FAFAFA] leading-6 font-medium">Add Company Logo</span>
               </div>
               <div class="flex flex-col gap-2">
-                <h1 class="font-medium text-[#FAFAFA] leading-10 text-3xl">Start your journey with us.</h1>
-                <span class="text-sm text-[#FAFAFA] leading-5">Discover the world's best community of freelancers ad business owners.</span>
+                <h1 class="font-medium text-[#FAFAFA] leading-10 text-3xl">
+                  Start your journey with us. <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon>
+                </h1>
+                <span class="text-sm text-[#FAFAFA] leading-5">
+                  Discover the world's best community of freelancers ad business owners.{' '}
+                  <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] mb-[-4px]" width="16" height="16"></iconify-icon>
+                </span>
               </div>
             </div>
             <div class="flex flex-col gap-1">
               <div class="rounded-lg bg-[#0B0E49] text-[#FAFAFA] px-8 pt-7 pb-16 text-xs leading-5">
                 <span class="inline-block">Discover the world's best community of freelancers ad business owners.</span>
               </div>
-              <span class="text-[#FAFAFA] ml-auto text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
+              <div class="flex ml-auto gap-1">
+                <iconify-icon icon="ant-design:star-outlined" class="text-[#FAFAFA]" width="12" height="12"></iconify-icon>
+                <span class="text-[#FAFAFA] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
+              </div>
             </div>
           </div>
         </div>
         <div class="bg-white flex-1 p-20">
           <div class="flex flex-col gap-8">
             <div class="flex flex-col gap-10">
-              <h1 class="leading-6 text-xl font-medium">Welcome to Company Name!</h1>
+              <h1 class="leading-6 text-xl font-medium">
+                Welcome to Company Name! <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon>
+              </h1>
               <div class="flex flex-col gap-9">
                 <div class="flex flex-col gap-6">
                   <label htmlFor="email" class="flex flex-col gap-2">
@@ -64,7 +74,7 @@ export class MyComponent {
                     <span class="text-sm leading-3 text-[#00000099]">Password</span>
                     <div class="flex relative">
                       <input type="text" class="border w-full border-[#D9D9D9] px-3 py-2 rounded-sm leading-6 text-base text-[rgba(0, 0, 0, 0.85)]" />
-                      <img class="absolute right-3 top-3 rounded-full" src="https://picsum.photos/11/16" alt="https://picsum.photos/11/16" />
+                      <iconify-icon icon="ant-design:eye-outlined" class="absolute right-3 top-3 text-[#00000073]" width="16" height="16"></iconify-icon>
                     </div>
                   </label>
                 </div>
@@ -83,7 +93,9 @@ export class MyComponent {
                 <hr class="flex-1 border-[#D8D8D8]" />
               </div>
               <div class="flex flex-col gap-3">
-                <button class="bg-white text-black border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)]  px-4 py-2 rounded-sm">Google</button>
+                <button class="bg-white flex items-center justify-center gap-3 text-black border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)]  px-4 py-2 rounded-sm">
+                  <iconify-icon icon="logos:google-icon"></iconify-icon>Google
+                </button>
                 <span class="text-center text-sm leading-6">
                   Already have an account? <span class="rounded text-[#2F54EB]">Log in</span>
                 </span>
