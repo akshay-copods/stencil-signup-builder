@@ -1,6 +1,7 @@
 import { Component, h, Prop, Watch } from '@stencil/core';
 import 'iconify-icon';
 import { SignupBuilderProps } from './interface';
+import { PsudoStyles } from './psudoStyles';
 
 //@ts-ignore
 @Component({
@@ -18,11 +19,12 @@ export class SignupComponent {
     const inputField = this.data.inputField;
     const typography = this.data.typography;
     const loginTypes = this.data.loginTypes;
-    console.log({ loginTypes });
+
     return (
       <div style={{ fontFamily: typography.fontFamily }} class="flex rounded-xl font-sans w-full h-full">
+        <PsudoStyles socialButton={socialButton} submitButton={submitButton} inputField={inputField} />
         {/* Layout Condition will come here */}
-        <div class="bg-[#120338] w-[424px] rounded-r-lg">
+        <div class="bg-[#120338] w-[424px] rounded-r-lg fooDiv">
           <div class="flex flex-col gap-40 pt-9 pb-16 px-16">
             <div class="flex flex-col gap-20">
               <div class="flex gap-2">
@@ -76,7 +78,7 @@ export class SignupComponent {
                               fontWeight: socialButton.styles.defaultState.fontWeight,
                               fontSize: socialButton.styles.defaultState.fontSize,
                             }}
-                            class="flex flex-1 h-9 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
+                            class="socialBtn flex flex-1 h-9 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
                           >
                             <iconify-icon icon={socialLogin.icon}></iconify-icon>
                             {loginTypes.socialLoginTypes.length > 3 ? null : socialLogin.name}
@@ -97,7 +99,7 @@ export class SignupComponent {
                                 fontWeight: socialButton.styles.defaultState.fontWeight,
                                 fontSize: socialButton.styles.defaultState.fontSize,
                               }}
-                              class="flex flex-1 h-9 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
+                              class="socialBtn flex flex-1 h-9 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
                             >
                               <iconify-icon icon={socialLogin.icon}></iconify-icon>
                               {socialLogin.name}
@@ -137,7 +139,7 @@ export class SignupComponent {
                       }}
                       type="text"
                       name="email"
-                      class="border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
+                      class="inputField border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
                     />
                   </label>
                   {loginTypes.loginMethods === 'password' && (
@@ -145,7 +147,6 @@ export class SignupComponent {
                       <span style={{ color: inputField.label.fontColor, fontSize: inputField.label.fontSize, fontWeight: inputField.label.fontWeight }} class="leading-3">
                         Password
                       </span>
-
                       <div class="flex relative">
                         <input
                           style={{
@@ -157,14 +158,13 @@ export class SignupComponent {
                             fontWeight: inputField.defaultState.fontWeight,
                           }}
                           type="text"
-                          class="w-full border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
+                          class="inputField w-full border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
                         />
                         <iconify-icon icon="ant-design:eye-outlined" class="absolute right-3 top-3 text-[#00000073]" width="16" height="16"></iconify-icon>
                       </div>
                     </label>
                   )}
                 </div>
-
                 <div class="flex flex-col gap-1">
                   <button
                     style={{
@@ -174,7 +174,7 @@ export class SignupComponent {
                       fontWeight: submitButton.styles.defaultState.fontWeight,
                       fontSize: submitButton.styles.defaultState.fontSize,
                     }}
-                    class="border border-[#9254DE] px-4 py-2"
+                    class="submitButton border border-[#9254DE] px-4 py-2"
                   >
                     Continue
                   </button>
@@ -215,7 +215,7 @@ export class SignupComponent {
                             fontWeight: socialButton.styles.defaultState.fontWeight,
                             fontSize: socialButton.styles.defaultState.fontSize,
                           }}
-                          class="flex flex-1 h-9 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
+                          class="socialBtn flex flex-1 h-9 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
                         >
                           <iconify-icon icon={socialLogin.icon}></iconify-icon>
                           {loginTypes.socialLoginTypes.length > 3 ? null : socialLogin.name}
@@ -236,7 +236,7 @@ export class SignupComponent {
                               fontWeight: socialButton.styles.defaultState.fontWeight,
                               fontSize: socialButton.styles.defaultState.fontSize,
                             }}
-                            class="flex flex-1 h-9 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
+                            class="socialBtn flex flex-1 h-9 items-center justify-center gap-3 border border-none shadow-[0px_2px_8px_rgba(0,0,0,0.15)] px-4 py-2"
                           >
                             <iconify-icon icon={socialLogin.icon}></iconify-icon>
                             {socialLogin.name}
