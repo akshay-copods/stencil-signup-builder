@@ -27,12 +27,12 @@ export class SignupComponent {
         {/* Layout Condition will come here */}
         {layout.gridLayout === 'SPLIT' && (
           <div style={{ backgroundColor: layout.contentBackground }} class="w-[424px] rounded-r-lg">
-            <div class="flex flex-col gap-40 pt-9 pb-16 px-16">
-              <div class="flex flex-col gap-20">
-                <div class="flex gap-2">
-                  {/* <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon> */}
-                  <span class="text-[#FAFAFA] leading-6 font-medium">Company Logo</span>
-                </div>
+            <div class="flex flex-col gap-20 pt-9 pb-16 px-16 h-full">
+              <div class="flex gap-2">
+                {/* <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon> */}
+                <span class="text-[#FAFAFA] leading-6 font-medium">Company Logo</span>
+              </div>
+              <div class="flex flex-col justify-between h-full">
                 <div class="flex flex-col gap-2">
                   <h1 style={{ fontSize: typography.title.fontSize, fontWeight: typography.title.Bold ? '700' : '400' }} class="font-medium text-[#FAFAFA] leading-10 text-3xl">
                     Start your journey with us.
@@ -43,14 +43,14 @@ export class SignupComponent {
                     {/* <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] mb-[-4px]" width="16" height="16"></iconify-icon> */}
                   </span>
                 </div>
-              </div>
-              <div class="flex flex-col gap-1">
-                <div class="rounded-lg bg-[#0B0E49] text-[#FAFAFA] px-8 pt-7 pb-16 text-xs leading-5">
-                  <span class="inline-block">Discover the world's best community of freelancers ad business owners.</span>
-                </div>
-                <div class="flex ml-auto gap-1">
-                  <iconify-icon icon="ant-design:star-outlined" class="text-[#FAFAFA]" width="12" height="12"></iconify-icon>
-                  <span class="text-[#FAFAFA] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
+                <div class="flex flex-col">
+                  <div class="rounded-lg bg-[#0B0E49] text-[#FAFAFA] px-8 pt-7 pb-16 text-xs leading-5">
+                    <span class="inline-block">Discover the world's best community of freelancers ad business owners.</span>
+                  </div>
+                  <div class="flex ml-auto gap-1">
+                    <iconify-icon icon="ant-design:star-outlined" class="text-[#FAFAFA]" width="12" height="12"></iconify-icon>
+                    <span class="text-[#FAFAFA] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
+                  </div>
                 </div>
               </div>
             </div>
