@@ -144,7 +144,7 @@ type LoginType = {
   approvals: Approval[];
 };
 
-type Layout = { gridLayout: Grid; contentBackground: string; viewPort: ViewPort,content:LayoutContent[] };
+type Layout = { gridLayout: Grid; contentBackground: string; gridContentWidth: string; viewPort: ViewPort,content:LayoutContent[]  };
 
 export type SignupBuilderProps = {
   theme: Theme;
