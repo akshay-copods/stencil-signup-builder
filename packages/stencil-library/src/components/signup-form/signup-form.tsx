@@ -26,7 +26,7 @@ export class SignupComponent {
         <PsudoStyles socialButton={socialButton} submitButton={submitButton} inputField={inputField} />
         {/* Layout Condition will come here */}
         {layout.gridLayout === 'SPLIT' && (
-          <div style={{ backgroundColor: layout.contentBackground }} class="w-[424px] rounded-r-lg">
+          <div class="bg-[#070930] w-[424px] rounded-r-lg">
             <div class="flex flex-col gap-20 pt-9 pb-16 px-16 h-full">
               <div class="flex gap-2">
                 {/* <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon> */}
