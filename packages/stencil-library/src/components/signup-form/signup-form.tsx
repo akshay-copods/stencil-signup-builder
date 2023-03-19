@@ -21,6 +21,7 @@ export class SignupComponent {
     const typography = this.data.typography;
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
+    console.log(layout.content)
     return (
       <div
         style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }}
@@ -55,6 +56,18 @@ export class SignupComponent {
                     <span class="text-[#FAFAFA] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
                   </div>
                 </div>
+              
+               {
+                
+               }
+                {/* {logos section will be shown as per layout selection} */}
+                {/* <div class='grid gap-8 grid-cols-6'>{logos.map((data)=>{
+                return(
+                  <div class='grid justify-center col-span-2'>
+                    <iconify-icon class="text-white" icon={data.icon} width="50" height="50"></iconify-icon>
+                  </div>
+                )
+              })}</div> */}
               </div>
             </div>
           </div>
