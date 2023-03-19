@@ -103,6 +103,7 @@ type LinkTypography = {
 
 type Typography = {
   fontFamily: FontFamily;
+  titleText: string;
   title: TextTypography;
   subTitle: TextTypography;
   links: LinkTypography;
