@@ -16,6 +16,17 @@ enum FontFamily {
   Inter = "'Open Sans', sans-serif",
 }
 
+enum LoginMethods {
+  MAGIC_LINK = 'magic_link',
+  MAGIC_CODE = 'magic_code',
+  PASSWORD = 'password',
+}
+
+enum Grid {
+  SINGLE = 'SINGLE',
+  SPLIT = 'SPLIT',
+}
+
 type InputLabelTheme = {
   fontColor: string;
   fontSize: string;
@@ -92,24 +103,25 @@ type Typography = {
   links: LinkTypography;
   normalText: TextTypography;
 };
+
 type SocialLoginButton = {
   icon: string;
   name: string;
 };
+
 type Approval = {
   name: string;
   link: string;
 };
-enum LoginMethods {
-  MAGIC_LINK = 'magic_link',
-  MAGIC_CODE = 'magic_code',
-  PASSWORD = 'password',
-}
+
 type LoginType = {
   socialLoginTypes: SocialLoginButton[];
   loginMethods: LoginMethods;
   approvals: Approval[];
 };
+
+type Layout = { gridLayout: Grid; contentBackground: string };
+
 export type SignupBuilderProps = {
   theme: Theme;
   socialButton: SocialButtonTypes;
@@ -117,4 +129,5 @@ export type SignupBuilderProps = {
   inputField: InputField;
   typography: Typography;
   loginTypes: LoginType;
+  layout: Layout;
 };

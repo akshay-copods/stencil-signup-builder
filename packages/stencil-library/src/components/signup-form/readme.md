@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                                                                                                                                                         | Default     |
-| -------- | --------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| `data`   | --        |             | `{ theme: Theme; socialButton: SocialButtonTypes; submitButton: SubmitButtonTypes; inputField: InputField; typography: Typography; loginTypes: LoginType; }` | `undefined` |
+| Property | Attribute | Description | Type                                                                                                                                                                         | Default     |
+| -------- | --------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `data`   | --        |             | `{ theme: Theme; socialButton: SocialButtonTypes; submitButton: SubmitButtonTypes; inputField: InputField; typography: Typography; loginTypes: LoginType; layout: Layout; }` | `undefined` |
 
 
 ----------------------------------------------
