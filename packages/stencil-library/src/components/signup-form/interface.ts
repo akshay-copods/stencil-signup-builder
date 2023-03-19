@@ -26,7 +26,12 @@ enum Grid {
   SINGLE = 'SINGLE',
   SPLIT = 'SPLIT',
 }
-
+enum ViewPort {
+  MOBILE = 'MOBILE',
+  TABLET = 'TABLET',
+  DESKTOP = 'DESKTOP',
+  FULLSCREEN = 'FULLSCREEN',
+}
 type InputLabelTheme = {
   fontColor: string;
   fontSize: string;
@@ -120,7 +125,7 @@ type LoginType = {
   approvals: Approval[];
 };
 
-type Layout = { gridLayout: Grid; contentBackground: string };
+type Layout = { gridLayout: Grid; contentBackground: string; viewPort: ViewPort };
 
 export type SignupBuilderProps = {
   theme: Theme;

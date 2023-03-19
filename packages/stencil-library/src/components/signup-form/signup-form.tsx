@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop, Watch, State } from '@stencil/core';
 import 'iconify-icon';
 import { SignupBuilderProps } from './interface';
 import { PsudoStyles } from './psudoStyles';
@@ -11,6 +11,7 @@ import { PsudoStyles } from './psudoStyles';
 })
 export class SignupComponent {
   @Prop() data: SignupBuilderProps;
+  @State() showPassword = false;
   @Watch('data')
   render() {
     const theme = this.data.theme;
@@ -20,12 +21,14 @@ export class SignupComponent {
     const typography = this.data.typography;
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
-
     return (
-      <div style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }} class="flex rounded-xl font-sans w-full h-[645px]">
+      <div
+        style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }}
+        class={`flex rounded-xl ${layout.viewPort === 'TABLET' || layout.viewPort === 'MOBILE' ? 'w-fit' : 'w-full'} font-sans  h-[645px]`}
+      >
         <PsudoStyles socialButton={socialButton} submitButton={submitButton} inputField={inputField} />
         {/* Layout Condition will come here */}
-        {layout.gridLayout === 'SPLIT' && (
+        {layout.gridLayout === 'SPLIT' && (layout.viewPort === 'FULLSCREEN' || layout.viewPort === 'DESKTOP') && (
           <div style={{ backgroundColor: layout.contentBackground }} class="w-[424px] rounded-r-lg">
             <div class="flex flex-col gap-20 pt-9 pb-16 px-16 h-full">
               <div class="flex gap-2">
@@ -56,8 +59,11 @@ export class SignupComponent {
             </div>
           </div>
         )}
-        <div style={{ backgroundColor: theme.backgroundColor }} class="flex-1 p-20 flex items-center justify-center">
-          <div class="flex flex-col gap-8 min-w-[480px] max-w-[480px]">
+        <div
+          style={{ backgroundColor: theme.backgroundColor }}
+          class={`flex-1 p-20 ${layout.viewPort === 'TABLET' && 'max-w-[768px]'} ${layout.viewPort === 'MOBILE' && 'max-w-[375px] p-8'} flex items-center justify-center`}
+        >
+          <div class={`flex flex-col gap-8  ${layout.viewPort !== 'MOBILE' && 'min-w-[480px]'} max-w-[480px]`}>
             <div class="flex flex-col gap-10">
               <h1 style={{ color: theme.textColor }} class="leading-6 text-xl font-medium">
                 Welcome to Company Name!
@@ -162,10 +168,18 @@ export class SignupComponent {
                             fontSize: inputField.defaultState.fontSize,
                             fontWeight: inputField.defaultState.fontWeight,
                           }}
-                          type="text"
+                          type={this.showPassword ? 'text' : 'password'}
                           class="inputField w-full border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
                         />
-                        <iconify-icon icon="ant-design:eye-outlined" class="absolute right-3 top-3 text-[#00000073]" width="16" height="16"></iconify-icon>
+                        <iconify-icon
+                          onClick={() => {
+                            this.showPassword = !this.showPassword;
+                          }}
+                          icon="ant-design:eye-outlined"
+                          class="absolute right-3 top-3 cursor-pointer text-[#00000073]"
+                          width="16"
+                          height="16"
+                        ></iconify-icon>
                       </div>
                     </label>
                   )}
