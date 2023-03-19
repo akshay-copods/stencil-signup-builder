@@ -41,7 +41,7 @@ export class SignupComponent {
       }
     });
     console.log({ typography });
-    console.log(this.email);
+    console.log(layout.content);
     return (
       <div
         style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }}
@@ -56,50 +56,64 @@ export class SignupComponent {
                 {/* <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon> */}
                 <span class="text-[#FAFAFA] leading-6 font-medium">Company Logo</span>
               </div>
-              <div class="flex flex-col justify-between h-full">
-                <div class="flex flex-col gap-2">
-                  <h1
-                    onClick={() => {
-                      this.editTitle = true;
-                      this.divElement.focus();
-                    }}
-                    ref={el => (this.divElement = el)}
-                    onInput={() => this.handleDivInput()}
-                    contentEditable
-                    style={{ fontSize: typography.title.fontSize, fontWeight: typography.title.Bold ? '700' : '400' }}
-                    class="title font-medium text-[#FAFAFA] leading-10 text-3xl"
-                  >
-                    {typography.titleText}
-                    {!this.editTitle && (
-                      <span>
-                        <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] cursor-pointer" width="16" height="16"></iconify-icon>
+              <div class={`flex flex-col ${layout.content.length > 1 ? 'justify-between' : 'justify-center'}  h-full`}>
+                {layout.content.map(data => {
+                  return data.type === 'STATEMENTS' ? (
+                    <div class="flex flex-col gap-2">
+                      <h1
+                        onClick={() => {
+                          this.editTitle = true;
+                          this.divElement.focus();
+                        }}
+                        ref={el => (this.divElement = el)}
+                        onInput={() => this.handleDivInput()}
+                        contentEditable
+                        style={{ fontSize: typography.title.fontSize, fontWeight: typography.title.Bold ? '700' : '400' }}
+                        class="title font-medium text-[#FAFAFA] leading-10 text-3xl"
+                      >
+                        {typography.titleText}
+                        {!this.editTitle && (
+                          <span>
+                            <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] cursor-pointer" width="16" height="16"></iconify-icon>
+                          </span>
+                        )}
+                      </h1>
+                      <span style={{ fontSize: typography.subTitle.fontSize, fontWeight: typography.subTitle.Bold ? '700' : '400' }} class="text-sm text-[#FAFAFA] leading-5">
+                        Discover the world's best community of freelancers ad business owners.{' '}
+                        {/* <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] mb-[-4px]" width="16" height="16"></iconify-icon> */}
                       </span>
-                    )}
-                  </h1>
-                  <span style={{ fontSize: typography.subTitle.fontSize, fontWeight: typography.subTitle.Bold ? '700' : '400' }} class="text-sm text-[#FAFAFA] leading-5">
-                    Discover the world's best community of freelancers ad business owners.{' '}
-                    {/* <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] mb-[-4px]" width="16" height="16"></iconify-icon> */}
-                  </span>
-                </div>
-                <div class="flex flex-col">
-                  <div class="rounded-lg bg-[#0B0E49] text-[#FAFAFA] px-8 pt-7 pb-16 text-xs leading-5">
-                    <span class="inline-block">Discover the world's best community of freelancers ad business owners.</span>
-                  </div>
-                  <div class="flex ml-auto gap-1">
-                    <iconify-icon icon="ant-design:star-outlined" class="text-[#FAFAFA]" width="12" height="12"></iconify-icon>
-                    <span class="text-[#FAFAFA] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
-                  </div>
-                </div>
+                    </div>
+                  ) : null;
+                })}
+                {layout.content.map(data => {
+                  console.log(data.type.includes('TESTIMONALS'));
+                  return data.type === 'TESTIMONALS' ? (
+                    <div class="flex flex-col-reverse gap-1">
+                      <div class="rounded-lg bg-[#0B0E49] text-[#FAFAFA] px-8 pt-7 pb-16 text-xs leading-5">
+                        <span class="inline-block">Discover the world's best community of freelancers ad business owners.</span>
+                      </div>
+                      <div class="flex ml-auto gap-1">
+                        <iconify-icon icon="ant-design:star-outlined" class="text-[#FAFAFA]" width="12" height="12"></iconify-icon>
+                        <span class="text-[#FAFAFA] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
+                      </div>
+                    </div>
+                  ) : null;
+                })}
 
-                {}
-                {/* {logos section will be shown as per layout selection} */}
-                {/* <div class='grid gap-8 grid-cols-6'>{logos.map((data)=>{
-                return(
-                  <div class='grid justify-center col-span-2'>
-                    <iconify-icon class="text-white" icon={data.icon} width="50" height="50"></iconify-icon>
-                  </div>
-                )
-              })}</div> */}
+                {layout.content.map(data => {
+                  console.log(data.type.includes('LOGO'));
+                  return data.type === 'LOGO' ? (
+                    <div class="grid gap-8 grid-cols-6">
+                      {data.content.map(contentData => {
+                        return (
+                          <div class="grid justify-center col-span-2">
+                            <img class="w-12 " src={contentData.imageUrl} alt="" />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : null;
+                })}
               </div>
             </div>
           </div>
@@ -166,7 +180,7 @@ export class SignupComponent {
                         )}
                       </div>
                     )}
-                    <span class="text-center text-sm leading-6">
+                    <span class="text-center text-[#0000099] text-sm leading-6">
                       Already have an account?{' '}
                       <span
                         style={{
@@ -265,7 +279,7 @@ export class SignupComponent {
                         >
                           {' ' + approval.name}
                         </span>
-                        {loginTypes.approvals.length > 1 && i !== loginTypes.approvals.length - 1 ? ' and ' : null}
+                        {loginTypes.approvals.length > 1 && i !== loginTypes.approvals.length - 1 ? <span class="text-[#0000099]">{" "}and</span> : null}
                       </span>
                     ))}
                   </span>
@@ -276,9 +290,7 @@ export class SignupComponent {
               <div class="flex flex-col gap-7">
                 <div class="flex items-center justify-center gap-2">
                   <hr class="flex-1 border-[#D8D8D8]" />
-                  <span style={{ color: theme.textColor }} class="w-32 text-xs text-center">
-                    OR SIGNUP WITH
-                  </span>
+                  <span class="w-32 text-xs text-[#00000073] text-center">OR SIGNUP WITH</span>
                   <hr class="flex-1 border-[#D8D8D8]" />
                 </div>
                 <div class="flex flex-col gap-3">
