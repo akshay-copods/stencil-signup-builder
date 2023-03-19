@@ -43,7 +43,7 @@ export class SignupComponent {
     //   },
     // ];
     return (
-      <div class={`flex  rounded-xl bg-white w-fit font  border-text-[#8C8C8C] border  `}>
+      <div class={`flex  rounded-xl bg-white w-full font  border-text-[#8C8C8C] border  `}>
         <div class={`bg-[#070930] min-w-[424px] rounded-lg  px-[50px] pb-[80px] pt-[30px]`}>
           <div class="flex gap-20 flex-col h-full ">
             <div class="flex items-center gap-2">
