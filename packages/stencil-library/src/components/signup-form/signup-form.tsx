@@ -2,6 +2,7 @@ import { Component, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/
 import 'iconify-icon';
 import { SignupBuilderProps } from './interface';
 import { PsudoStyles } from './psudoStyles';
+import avtar from '../../assessts/Avatar.svg'
 
 //@ts-ignore
 @Component({
@@ -68,7 +69,7 @@ export class SignupComponent {
                         ref={el => (this.divElement = el)}
                         onInput={() => this.handleDivInput()}
                         contentEditable
-                        style={{ fontSize: typography.title.fontSize, fontWeight: typography.title.Bold ? '700' : '400' }}
+                        style={{ fontSize: '30px', fontWeight: typography.title.Bold ? '700' : '400' }}
                         class="title font-medium text-[#FAFAFA] leading-10 text-3xl"
                       >
                         {typography.titleText}
@@ -78,7 +79,7 @@ export class SignupComponent {
                           </span>
                         )}
                       </h1>
-                      <span style={{ fontSize: typography.subTitle.fontSize, fontWeight: typography.subTitle.Bold ? '700' : '400' }} class="text-sm text-[#FAFAFA] leading-5">
+                      <span style={{ fontSize: typography.subTitle.fontSize, fontWeight: typography.subTitle.Bold ? '700' : '400' }} class={`text-sm text-[#FAFAFA] leading-5`}>
                         Discover the world's best community of freelancers ad business owners.{' '}
                         {/* <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] mb-[-4px]" width="16" height="16"></iconify-icon> */}
                       </span>
@@ -88,13 +89,28 @@ export class SignupComponent {
                 {layout.content.map(data => {
                   console.log(data.type.includes('TESTIMONALS'));
                   return data.type === 'TESTIMONALS' ? (
-                    <div class="flex flex-col-reverse gap-1">
-                      <div class="rounded-lg bg-[#0B0E49] text-[#FAFAFA] px-8 pt-7 pb-16 text-xs leading-5">
-                        <span class="inline-block">Discover the world's best community of freelancers ad business owners.</span>
+                    <div class='flex flex-col-reverse gap-1'>
+                      <div  class=" px-8 rounded-lg bg-[#0B0E49] pt-7 pb-16 ">
+                        <div class="flex flex-col gap-6 items-center ">
+                          <span class=" text-[#FAFAFA] text-xs">Discover the world's best community of freelancers ad business owners.</span>
+                          <div class='flex gap-2 w-full'>
+                          <img src={avtar} alt="" />
+                          <div>
+                          <h4 style={{ fontSize: this.data.typography.subTitle.fontSize }} class="text-white">
+                              Arun Raj
+                            </h4>
+                            <span style={{ fontSize: this.data.typography.normalText.fontSize }} class="text-white">
+                              Senior Product Manger @ABSoftwares
+                            </span>
+                          </div>
+                           
+                          </div>
+                        </div>
                       </div>
+
                       <div class="flex ml-auto gap-1">
-                        <iconify-icon icon="ant-design:star-outlined" class="text-[#FAFAFA]" width="12" height="12"></iconify-icon>
-                        <span class="text-[#FAFAFA] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
+                        <iconify-icon icon="ant-design:star-outlined" class="text-[#1890FF]" width="12" height="12"></iconify-icon>
+                        <span class="text-[#1890FF] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
                       </div>
                     </div>
                   ) : null;
@@ -124,7 +140,7 @@ export class SignupComponent {
         >
           <div class={`flex flex-col gap-8  ${layout.viewPort !== 'MOBILE' && 'min-w-[480px]'} max-w-[480px]`}>
             <div class="flex flex-col gap-10">
-              <h1 style={{ color: theme.textColor }} class="leading-6 text-xl font-medium">
+              <h1 style={{ color: theme.textColor, fontSize: typography.title.fontSize }} class={`leading-6 text-xl ${typography.title.Bold ? 'font-bold' : 'font-medium'} `}>
                 Welcome to Company Name!
                 {/* --<iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon> */}
               </h1>
@@ -180,7 +196,7 @@ export class SignupComponent {
                         )}
                       </div>
                     )}
-                    <span class="text-center text-[#0000099] text-sm leading-6">
+                    <span style={{color:theme.secondaryColor}} class="text-center text-sm leading-6">
                       Already have an account?{' '}
                       <span
                         style={{
@@ -264,7 +280,7 @@ export class SignupComponent {
                   >
                     Continue
                   </button>
-                  <span style={{ color: theme.textColor }} class="text-xs leading-6 ">
+                  <span style={{ color: theme.secondaryColor }} class={`text-xs leading-6  font-normal `}>
                     By continuing, you agree to the
                     {loginTypes.approvals.map((approval, i) => (
                       <span>
@@ -279,7 +295,7 @@ export class SignupComponent {
                         >
                           {' ' + approval.name}
                         </span>
-                        {loginTypes.approvals.length > 1 && i !== loginTypes.approvals.length - 1 ? <span class="text-[#0000099]">{" "}and</span> : null}
+                        {loginTypes.approvals.length > 1 && i !== loginTypes.approvals.length - 1 ? <span style={{ color: theme.secondaryColor }}> and</span> : null}
                       </span>
                     ))}
                   </span>
@@ -339,7 +355,7 @@ export class SignupComponent {
                     </div>
                   )}
                 </div>
-                <span style={{ color: theme.textColor }} class="text-center text-sm leading-6">
+                <span style={{ color: theme.secondaryColor }} class="text-center  text-sm leading-6">
                   Already have an account?{' '}
                   <span
                     style={{
