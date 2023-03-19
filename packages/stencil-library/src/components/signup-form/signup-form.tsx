@@ -14,11 +14,15 @@ export class SignupComponent {
   divElement: HTMLDivElement;
   @Prop() data: SignupBuilderProps;
   @State() showPassword = false;
+  @State() email: string = '';
   @State() editTitle = false;
   @Watch('data')
   handleDivInput() {
     const value = this.divElement.innerText;
     this.myChange.emit(value);
+  }
+  handleChange(event) {
+    this.email = event?.target?.value;
   }
 
   render() {
@@ -37,6 +41,7 @@ export class SignupComponent {
       }
     });
     console.log({ typography });
+    console.log(this.email);
     return (
       <div
         style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }}
@@ -101,7 +106,7 @@ export class SignupComponent {
         )}
         <div
           style={{ backgroundColor: theme.backgroundColor, width: `${100 - Number(layout.gridContentWidth)}%` }}
-          class={`flex-1 p-20 ${layout.viewPort === 'TABLET' && 'max-w-[768px]'} ${layout.viewPort === 'MOBILE' && 'max-w-[375px]'} flex items-center justify-center`}
+          class={`flex-1  ${layout.viewPort === 'TABLET' && 'max-w-[768px]'} ${layout.viewPort === 'MOBILE' ? 'max-w-[375px] p-9' : 'p-20'} flex items-center justify-center`}
         >
           <div class={`flex flex-col gap-8  ${layout.viewPort !== 'MOBILE' && 'min-w-[480px]'} max-w-[480px]`}>
             <div class="flex flex-col gap-10">
@@ -196,8 +201,11 @@ export class SignupComponent {
                       type="text"
                       name="email"
                       class="inputField border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
+                      onInput={event => this.handleChange(event)}
                     />
+                    {!this.email?.includes('@') && this.email?.length > 0 && <span style={{ color: theme.errorColor }}>please enter a valid email</span>}
                   </label>
+
                   {loginTypes.loginMethods === 'password' && (
                     <label htmlFor="passowrd" class="flex flex-col gap-2">
                       <span style={{ color: theme.labelColor, fontSize: inputField.label.fontSize, fontWeight: inputField.label.fontWeight }} class="leading-3">
