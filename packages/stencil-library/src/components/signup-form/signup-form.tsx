@@ -29,7 +29,7 @@ export class SignupComponent {
         <PsudoStyles socialButton={socialButton} submitButton={submitButton} inputField={inputField} />
         {/* Layout Condition will come here */}
         {layout.gridLayout === 'SPLIT' && (layout.viewPort === 'FULLSCREEN' || layout.viewPort === 'DESKTOP') && (
-          <div style={{ backgroundColor: layout.contentBackground }} class="w-[424px] rounded-r-lg">
+          <div style={{ width: `${layout.gridContentWidth}%` }} class="bg-[#070930] rounded-r-lg">
             <div class="flex flex-col gap-20 pt-9 pb-16 px-16 h-full">
               <div class="flex gap-2">
                 {/* <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon> */}
@@ -60,8 +60,8 @@ export class SignupComponent {
           </div>
         )}
         <div
-          style={{ backgroundColor: theme.backgroundColor }}
-          class={`flex-1 p-20 ${layout.viewPort === 'TABLET' && 'max-w-[768px]'} ${layout.viewPort === 'MOBILE' && 'max-w-[375px] p-8'} flex items-center justify-center`}
+          style={{ backgroundColor: theme.backgroundColor, width: `${100 - Number(layout.gridContentWidth)}%` }}
+          class={`flex-1 p-20 ${layout.viewPort === 'TABLET' && 'max-w-[768px]'} ${layout.viewPort === 'MOBILE' && 'max-w-[375px]'} flex items-center justify-center`}
         >
           <div class={`flex flex-col gap-8  ${layout.viewPort !== 'MOBILE' && 'min-w-[480px]'} max-w-[480px]`}>
             <div class="flex flex-col gap-10">
