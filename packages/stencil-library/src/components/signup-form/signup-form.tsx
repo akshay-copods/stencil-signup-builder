@@ -22,7 +22,7 @@ export class SignupComponent {
     const layout = this.data.layout;
 
     return (
-      <div style={{ fontFamily: typography.fontFamily }} class="flex rounded-xl font-sans w-full h-[645px]">
+      <div style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }} class="flex rounded-xl font-sans w-full h-[645px]">
         <PsudoStyles socialButton={socialButton} submitButton={submitButton} inputField={inputField} />
         {/* Layout Condition will come here */}
         {layout.gridLayout === 'SPLIT' && (
@@ -35,7 +35,7 @@ export class SignupComponent {
                 </div>
                 <div class="flex flex-col gap-2">
                   <h1 style={{ fontSize: typography.title.fontSize, fontWeight: typography.title.Bold ? '700' : '400' }} class="font-medium text-[#FAFAFA] leading-10 text-3xl">
-                    Start your journey with us. 
+                    Start your journey with us.
                     {/* <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon> */}
                   </h1>
                   <span style={{ fontSize: typography.subTitle.fontSize, fontWeight: typography.subTitle.Bold ? '700' : '400' }} class="text-sm text-[#FAFAFA] leading-5">
@@ -60,7 +60,7 @@ export class SignupComponent {
           <div class="flex flex-col gap-8 min-w-[480px] max-w-[480px]">
             <div class="flex flex-col gap-10">
               <h1 style={{ color: theme.textColor }} class="leading-6 text-xl font-medium">
-                Welcome to Company Name! 
+                Welcome to Company Name!
                 {/* --<iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon> */}
               </h1>
               {socialButton.position === 'TOP' && loginTypes.socialLoginTypes.length !== 0 && (
