@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch, State } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import 'iconify-icon';
 import { SignupBuilderProps } from './interface';
 import { PsudoStyles } from './psudoStyles';
@@ -10,9 +10,17 @@ import { PsudoStyles } from './psudoStyles';
   styleUrl: 'form.css',
 })
 export class SignupComponent {
+  @Event() myChange: EventEmitter;
+  divElement: HTMLDivElement;
   @Prop() data: SignupBuilderProps;
   @State() showPassword = false;
+  @State() editTitle = false;
   @Watch('data')
+  handleDivInput() {
+    const value = this.divElement.innerText;
+    this.myChange.emit(value);
+  }
+
   render() {
     const theme = this.data.theme;
     const socialButton = this.data.socialButton;
@@ -21,6 +29,14 @@ export class SignupComponent {
     const typography = this.data.typography;
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
+
+    document.addEventListener('click', e => {
+      console.log('FIRST IF', e.composedPath()[0]);
+      if (e.composedPath()[0] !== this.divElement) {
+        this.editTitle = false;
+      }
+    });
+    console.log({ typography });
     return (
       <div
         style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }}
@@ -37,9 +53,23 @@ export class SignupComponent {
               </div>
               <div class="flex flex-col justify-between h-full">
                 <div class="flex flex-col gap-2">
-                  <h1 style={{ fontSize: typography.title.fontSize, fontWeight: typography.title.Bold ? '700' : '400' }} class="font-medium text-[#FAFAFA] leading-10 text-3xl">
-                    Start your journey with us.
-                    {/* <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon> */}
+                  <h1
+                    onClick={() => {
+                      this.editTitle = true;
+                      this.divElement.focus();
+                    }}
+                    ref={el => (this.divElement = el)}
+                    onInput={() => this.handleDivInput()}
+                    contentEditable
+                    style={{ fontSize: typography.title.fontSize, fontWeight: typography.title.Bold ? '700' : '400' }}
+                    class="title font-medium text-[#FAFAFA] leading-10 text-3xl"
+                  >
+                    {typography.titleText}
+                    {!this.editTitle && (
+                      <span>
+                        <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] cursor-pointer" width="16" height="16"></iconify-icon>
+                      </span>
+                    )}
                   </h1>
                   <span style={{ fontSize: typography.subTitle.fontSize, fontWeight: typography.subTitle.Bold ? '700' : '400' }} class="text-sm text-[#FAFAFA] leading-5">
                     Discover the world's best community of freelancers ad business owners.{' '}

@@ -26,6 +26,10 @@ export namespace Components {
         "data": SignupBuilderProps;
     }
 }
+export interface SignupComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSignupComponentElement;
+}
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
@@ -61,6 +65,7 @@ declare namespace LocalJSX {
     }
     interface SignupComponent {
         "data"?: SignupBuilderProps;
+        "onMyChange"?: (event: SignupComponentCustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
