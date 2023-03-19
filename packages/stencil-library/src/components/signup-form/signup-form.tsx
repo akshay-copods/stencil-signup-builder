@@ -21,7 +21,6 @@ export class SignupComponent {
     const typography = this.data.typography;
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
-    console.log(layout.content)
     return (
       <div
         style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }}
@@ -56,10 +55,8 @@ export class SignupComponent {
                     <span class="text-[#FAFAFA] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
                   </div>
                 </div>
-              
-               {
-                
-               }
+
+                {}
                 {/* {logos section will be shown as per layout selection} */}
                 {/* <div class='grid gap-8 grid-cols-6'>{logos.map((data)=>{
                 return(
@@ -137,8 +134,13 @@ export class SignupComponent {
                     <span class="text-center text-sm leading-6">
                       Already have an account?{' '}
                       <span
-                        style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400', textDecoration: typography.links.style }}
-                        class="rounded text-[#2F54EB]"
+                        style={{
+                          fontSize: typography.links.fontSize,
+                          fontWeight: typography.links.Bold ? '700' : '400',
+                          textDecoration: typography.links.style,
+                          color: theme.primaryColor,
+                        }}
+                        class="rounded "
                       >
                         Log in
                       </span>
@@ -149,7 +151,7 @@ export class SignupComponent {
               <div class="flex flex-col gap-9">
                 <div class="flex flex-col gap-6">
                   <label htmlFor="email" class="flex flex-col gap-2">
-                    <span style={{ color: inputField.label.fontColor, fontSize: inputField.label.fontSize, fontWeight: inputField.label.fontWeight }} class="leading-3">
+                    <span style={{ color: theme.labelColor, fontSize: inputField.label.fontSize, fontWeight: inputField.label.fontWeight }} class="leading-3">
                       Email
                     </span>
                     <input
@@ -168,7 +170,7 @@ export class SignupComponent {
                   </label>
                   {loginTypes.loginMethods === 'password' && (
                     <label htmlFor="passowrd" class="flex flex-col gap-2">
-                      <span style={{ color: inputField.label.fontColor, fontSize: inputField.label.fontSize, fontWeight: inputField.label.fontWeight }} class="leading-3">
+                      <span style={{ color: theme.labelColor, fontSize: inputField.label.fontSize, fontWeight: inputField.label.fontWeight }} class="leading-3">
                         Password
                       </span>
                       <div class="flex relative">
@@ -210,13 +212,18 @@ export class SignupComponent {
                   >
                     Continue
                   </button>
-                  <span class="text-xs leading-6 text-[#00000073]">
+                  <span style={{ color: theme.textColor }} class="text-xs leading-6 ">
                     By continuing, you agree to the
                     {loginTypes.approvals.map((approval, i) => (
                       <span>
                         <span
-                          style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400', textDecoration: typography.links.style }}
-                          class="text-[#2f54eb] opacity-100"
+                          style={{
+                            fontSize: typography.links.fontSize,
+                            fontWeight: typography.links.Bold ? '700' : '400',
+                            textDecoration: typography.links.style,
+                            color: theme.primaryColor,
+                          }}
+                          class=" opacity-100"
                         >
                           {' ' + approval.name}
                         </span>
@@ -231,7 +238,9 @@ export class SignupComponent {
               <div class="flex flex-col gap-7">
                 <div class="flex items-center justify-center gap-2">
                   <hr class="flex-1 border-[#D8D8D8]" />
-                  <span class="w-32 text-xs text-center text-[#00000073]">OR SIGNUP WITH</span>
+                  <span style={{ color: theme.textColor }} class="w-32 text-xs text-center">
+                    OR SIGNUP WITH
+                  </span>
                   <hr class="flex-1 border-[#D8D8D8]" />
                 </div>
                 <div class="flex flex-col gap-3">
@@ -280,11 +289,16 @@ export class SignupComponent {
                     </div>
                   )}
                 </div>
-                <span class="text-center text-sm leading-6">
+                <span style={{ color: theme.textColor }} class="text-center text-sm leading-6">
                   Already have an account?{' '}
                   <span
-                    style={{ fontSize: typography.links.fontSize, fontWeight: typography.links.Bold ? '700' : '400', textDecoration: typography.links.style }}
-                    class="rounded text-[#2F54EB]"
+                    style={{
+                      fontSize: typography.links.fontSize,
+                      fontWeight: typography.links.Bold ? '700' : '400',
+                      textDecoration: typography.links.style,
+                      color: theme.primaryColor,
+                    }}
+                    class="rounded"
                   >
                     Log in
                   </span>

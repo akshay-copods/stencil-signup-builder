@@ -81,6 +81,7 @@ type ButtonStateTheme = {
 };
 
 type Theme = {
+  labelColor: string;
   backgroundColor: string;
   primaryColor: string;
   secondaryColor: string;
