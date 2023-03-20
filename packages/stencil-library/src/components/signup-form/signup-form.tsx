@@ -146,9 +146,21 @@ export class SignupComponent {
           style={{ backgroundColor: theme.backgroundColor, width: `${100 - Number(layout.gridContentWidth)}%` }}
           class={`flex-1  ${layout.viewPort === 'TABLET' && 'max-w-[768px]'} ${layout.viewPort === 'MOBILE' ? 'max-w-[375px] p-9' : 'p-20'} flex items-center justify-center`}
         >
-          <div class={`flex flex-col gap-8  ${layout.viewPort !== 'MOBILE' && 'min-w-[480px]'} max-w-[480px]`}>
+          <div class={`flex flex-col gap-8  ${layout.viewPort !== 'MOBILE' && 'w-[480px]'}`}>
+            {(layout.viewPort === 'MOBILE' || layout.viewPort === 'TABLET') && (
+              <div class="flex items-center justify-center">
+                {logo.logoImage ? (
+                  <img class="max-w-[100px]" src={logo.logoImage} alt="" />
+                ) : (
+                  <div class="border items-center px-4  flex flex-col gap-2 rounded-[52px] w-fit py-4">
+                    <iconify-icon icon="ant-design:plus-circle-outlined" class="text-black" width="27.09" height="27.41"></iconify-icon>
+                    <span>Add Logo</span>
+                  </div>
+                )}
+              </div>
+            )}
             <div class="flex flex-col gap-10">
-              <h1 style={{ color: theme.textColor, fontSize: typography.title.fontSize }} class={`leading-6 text-xl ${typography.title.Bold ? 'font-bold' : 'font-medium'} `}>
+              <h1 style={{ color: theme.textColor, fontSize: typography.title.fontSize }} class={`leading-6 text-xl ${typography.title.Bold ? 'font-bold' : 'font-medium'} ${(layout.viewPort === 'MOBILE' || layout.viewPort === 'TABLET')&&'self-center'} `}>
                 Welcome to Company Name!
                 {/* --<iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon> */}
               </h1>
