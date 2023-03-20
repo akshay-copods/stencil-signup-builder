@@ -10,7 +10,6 @@ export class SecondTemplate {
   render() {
     return (
       <div class="h-[40rem] w-full flex tx">
-        <h1 class="tx">HELLO</h1>
         <div class=" bg-white w-[50%] flex flex-col justify-center items-center">
           <div class=" flex flex-col justify-between items-center w-[25rem] gap-5">
             <h1 class="font-bold text-2xl">Let's get started</h1>
