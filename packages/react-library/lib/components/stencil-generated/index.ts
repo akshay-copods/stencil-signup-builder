@@ -9,4 +9,5 @@ import { defineCustomElements } from 'stencil-library/loader';
 
 defineCustomElements();
 export const MyComponent = /*@__PURE__*/createReactComponent<JSX.MyComponent, HTMLMyComponentElement>('my-component');
+export const SecondTemplate = /*@__PURE__*/createReactComponent<JSX.SecondTemplate, HTMLSecondTemplateElement>('second-template');
 export const SignupComponent = /*@__PURE__*/createReactComponent<JSX.SignupComponent, HTMLSignupComponentElement>('signup-component');

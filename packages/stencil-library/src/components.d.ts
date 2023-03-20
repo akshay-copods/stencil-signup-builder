@@ -22,6 +22,8 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface SecondTemplate {
+    }
     interface SignupComponent {
         "data": SignupBuilderProps;
     }
@@ -37,6 +39,12 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLSecondTemplateElement extends Components.SecondTemplate, HTMLStencilElement {
+    }
+    var HTMLSecondTemplateElement: {
+        prototype: HTMLSecondTemplateElement;
+        new (): HTMLSecondTemplateElement;
+    };
     interface HTMLSignupComponentElement extends Components.SignupComponent, HTMLStencilElement {
     }
     var HTMLSignupComponentElement: {
@@ -45,6 +53,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "second-template": HTMLSecondTemplateElement;
         "signup-component": HTMLSignupComponentElement;
     }
 }
@@ -63,12 +72,15 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface SecondTemplate {
+    }
     interface SignupComponent {
         "data"?: SignupBuilderProps;
         "onMyChange"?: (event: SignupComponentCustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "second-template": SecondTemplate;
         "signup-component": SignupComponent;
     }
 }
@@ -77,6 +89,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "second-template": LocalJSX.SecondTemplate & JSXBase.HTMLAttributes<HTMLSecondTemplateElement>;
             "signup-component": LocalJSX.SignupComponent & JSXBase.HTMLAttributes<HTMLSignupComponentElement>;
         }
     }
