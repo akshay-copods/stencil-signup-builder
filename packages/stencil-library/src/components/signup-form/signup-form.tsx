@@ -2,7 +2,7 @@ import { Component, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/
 import 'iconify-icon';
 import { SignupBuilderProps } from './interface';
 import { PsudoStyles } from './psudoStyles';
-import avtar from '../../assessts/Avatar.svg'
+import avtar from '../../assessts/Avatar.svg';
 
 //@ts-ignore
 @Component({
@@ -34,6 +34,8 @@ export class SignupComponent {
     const typography = this.data.typography;
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
+    const logo = this.data.logo;
+    console.log(logo);
 
     document.addEventListener('click', e => {
       console.log('FIRST IF', e.composedPath()[0]);
@@ -53,10 +55,17 @@ export class SignupComponent {
         {layout.gridLayout === 'SPLIT' && (layout.viewPort === 'FULLSCREEN' || layout.viewPort === 'DESKTOP') && (
           <div style={{ width: `${layout.gridContentWidth}%` }} class="bg-[#070930] rounded-r-lg">
             <div class="flex flex-col gap-20 pt-9 pb-16 px-16 h-full">
-              <div class="flex gap-2">
-                {/* <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon> */}
-                <span class="text-[#FAFAFA] leading-6 font-medium">Company Logo</span>
+              <div class={`${logo.alignment === 'CENTER' ? 'flex justify-center' : logo.alignment === 'RIGHT' ? 'flex justify-end' : null}`}>
+                {logo.logoImage ? (
+                  <img class="max-w-[100px]" src={logo.logoImage} alt="" />
+                ) : (
+                  <div class="flex gap-2">
+                    <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon>
+                    <span class="text-[#FAFAFA] leading-6 font-medium">Add Company Logo </span>
+                  </div>
+                )}
               </div>
+
               <div class={`flex flex-col ${layout.content.length > 1 ? 'justify-between' : 'justify-center'}  h-full`}>
                 {layout.content.map(data => {
                   return data.type === 'STATEMENTS' ? (
@@ -89,21 +98,20 @@ export class SignupComponent {
                 {layout.content.map(data => {
                   console.log(data.type.includes('TESTIMONALS'));
                   return data.type === 'TESTIMONALS' ? (
-                    <div class='flex flex-col-reverse gap-1'>
-                      <div  class=" px-8 rounded-lg bg-[#0B0E49] pt-7 pb-16 ">
+                    <div class="flex flex-col-reverse gap-1">
+                      <div class=" px-8 rounded-lg bg-[#0B0E49] pt-7 pb-16 ">
                         <div class="flex flex-col gap-6 items-center ">
                           <span class=" text-[#FAFAFA] text-xs">Discover the world's best community of freelancers ad business owners.</span>
-                          <div class='flex gap-2 w-full'>
-                          <img src={avtar} alt="" />
-                          <div>
-                          <h4 style={{ fontSize: this.data.typography.subTitle.fontSize }} class="text-white">
-                              Arun Raj
-                            </h4>
-                            <span style={{ fontSize: this.data.typography.normalText.fontSize }} class="text-white">
-                              Senior Product Manger @ABSoftwares
-                            </span>
-                          </div>
-                           
+                          <div class="flex gap-2 w-full">
+                            <img src={avtar} alt="" />
+                            <div>
+                              <h4 style={{ fontSize: this.data.typography.subTitle.fontSize }} class="text-white">
+                                Arun Raj
+                              </h4>
+                              <span style={{ fontSize: this.data.typography.normalText.fontSize }} class="text-white">
+                                Senior Product Manger @ABSoftwares
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -196,7 +204,7 @@ export class SignupComponent {
                         )}
                       </div>
                     )}
-                    <span style={{color:theme.secondaryColor}} class="text-center text-sm leading-6">
+                    <span style={{ color: theme.secondaryColor }} class="text-center text-sm leading-6">
                       Already have an account?{' '}
                       <span
                         style={{
