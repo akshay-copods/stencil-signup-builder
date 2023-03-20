@@ -32,7 +32,13 @@ enum ViewPort {
   DESKTOP = 'DESKTOP',
   FULLSCREEN = 'FULLSCREEN',
 }
- type LayoutContentTestimonial = {
+enum Alignment {
+  'LEFT' = 'LEFT',
+  'CENTER' = 'CENTER',
+  'RIGHT' = 'RIGHT',
+}
+
+type LayoutContentTestimonial = {
   order: number;
   personName: string;
   personImage: string;
@@ -41,14 +47,14 @@ enum ViewPort {
   personQuote: string;
 };
 
- type LayoutContentLogo = {
+type LayoutContentLogo = {
   order: number;
   imageUrl: string;
 };
- type LayoutContent = {
+type LayoutContent = {
   order: number;
   type: string;
-  name:string;
+  name: string;
   content: LayoutContentTestimonial[] | LayoutContentLogo[];
 };
 type InputLabelTheme = {
@@ -145,8 +151,12 @@ type LoginType = {
   loginMethods: LoginMethods;
   approvals: Approval[];
 };
+ interface LogoState {
+  logoImage: string;
+  alignment: Alignment;
 
-type Layout = { gridLayout: Grid; contentBackground: string; gridContentWidth: string; viewPort: ViewPort,content:LayoutContent[]  };
+}
+type Layout = { gridLayout: Grid; contentBackground: string; gridContentWidth: string; viewPort: ViewPort; content: LayoutContent[] };
 
 export type SignupBuilderProps = {
   theme: Theme;
@@ -156,4 +166,7 @@ export type SignupBuilderProps = {
   typography: Typography;
   loginTypes: LoginType;
   layout: Layout;
+    logo:LogoState
 };
+
+

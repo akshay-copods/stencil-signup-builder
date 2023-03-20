@@ -2,7 +2,7 @@ import { Component, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/
 import 'iconify-icon';
 import { SignupBuilderProps } from './interface';
 import { PsudoStyles } from './psudoStyles';
-import avtar from '../../assessts/Avatar.svg'
+import avtar from '../../assessts/Avatar.svg';
 
 //@ts-ignore
 @Component({
@@ -34,6 +34,8 @@ export class SignupComponent {
     const typography = this.data.typography;
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
+    const logo = this.data.logo;
+    console.log(logo);
 
     document.addEventListener('click', e => {
       console.log('FIRST IF', e.composedPath()[0]);
@@ -53,10 +55,17 @@ export class SignupComponent {
         {layout.gridLayout === 'SPLIT' && (layout.viewPort === 'FULLSCREEN' || layout.viewPort === 'DESKTOP') && (
           <div style={{ width: `${layout.gridContentWidth}%` }} class="bg-[#070930] rounded-r-lg">
             <div class="flex flex-col gap-20 pt-9 pb-16 px-16 h-full">
-              <div class="flex gap-2">
-                {/* <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon> */}
-                <span class="text-[#FAFAFA] leading-6 font-medium">Company Logo</span>
+              <div class={`${logo.alignment === 'CENTER' ? 'flex justify-center' : logo.alignment === 'RIGHT' ? 'flex justify-end' : null}`}>
+                {logo.logoImage ? (
+                  <img class="max-w-[100px]" src={logo.logoImage} alt="" />
+                ) : (
+                  <div class="flex gap-2">
+                    <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon>
+                    <span class="text-[#FAFAFA] leading-6 font-medium">Add Company Logo </span>
+                  </div>
+                )}
               </div>
+
               <div class={`flex flex-col ${layout.content.length > 1 ? 'justify-between' : 'justify-center'}  h-full`}>
                 {layout.content.map(data => {
                   return data.type === 'STATEMENTS' ? (
@@ -89,21 +98,20 @@ export class SignupComponent {
                 {layout.content.map(data => {
                   console.log(data.type.includes('TESTIMONALS'));
                   return data.type === 'TESTIMONALS' ? (
-                    <div class='flex flex-col-reverse gap-1'>
-                      <div  class=" px-8 rounded-lg bg-[#0B0E49] pt-7 pb-16 ">
+                    <div class="flex flex-col-reverse gap-1">
+                      <div class=" px-8 rounded-lg bg-[#0B0E49] pt-7 pb-16 ">
                         <div class="flex flex-col gap-6 items-center ">
                           <span class=" text-[#FAFAFA] text-xs">Discover the world's best community of freelancers ad business owners.</span>
-                          <div class='flex gap-2 w-full'>
-                          <img src={avtar} alt="" />
-                          <div>
-                          <h4 style={{ fontSize: this.data.typography.subTitle.fontSize }} class="text-white">
-                              Arun Raj
-                            </h4>
-                            <span style={{ fontSize: this.data.typography.normalText.fontSize }} class="text-white">
-                              Senior Product Manger @ABSoftwares
-                            </span>
-                          </div>
-                           
+                          <div class="flex gap-2 w-full">
+                            <img src={avtar} alt="" />
+                            <div>
+                              <h4 style={{ fontSize: this.data.typography.subTitle.fontSize }} class="text-white">
+                                Arun Raj
+                              </h4>
+                              <span style={{ fontSize: this.data.typography.normalText.fontSize }} class="text-white">
+                                Senior Product Manger @ABSoftwares
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -138,9 +146,21 @@ export class SignupComponent {
           style={{ backgroundColor: theme.backgroundColor, width: `${100 - Number(layout.gridContentWidth)}%` }}
           class={`flex-1  ${layout.viewPort === 'TABLET' && 'max-w-[768px]'} ${layout.viewPort === 'MOBILE' ? 'max-w-[375px] p-9' : 'p-20'} flex items-center justify-center`}
         >
-          <div class={`flex flex-col gap-8  ${layout.viewPort !== 'MOBILE' && 'min-w-[480px]'} max-w-[480px]`}>
+          <div class={`flex flex-col gap-8  ${layout.viewPort !== 'MOBILE' && 'w-[480px]'}`}>
+            {(layout.viewPort === 'MOBILE' || layout.viewPort === 'TABLET') && (
+              <div class="flex items-center justify-center">
+                {logo.logoImage ? (
+                  <img class="max-w-[100px]" src={logo.logoImage} alt="" />
+                ) : (
+                  <div class="border items-center px-4  flex flex-col gap-2 rounded-[52px] w-fit py-4">
+                    <iconify-icon icon="ant-design:plus-circle-outlined" class="text-black" width="27.09" height="27.41"></iconify-icon>
+                    <span>Add Logo</span>
+                  </div>
+                )}
+              </div>
+            )}
             <div class="flex flex-col gap-10">
-              <h1 style={{ color: theme.textColor, fontSize: typography.title.fontSize }} class={`leading-6 text-xl ${typography.title.Bold ? 'font-bold' : 'font-medium'} `}>
+              <h1 style={{ color: theme.textColor, fontSize: typography.title.fontSize }} class={`leading-6 text-xl ${typography.title.Bold ? 'font-bold' : 'font-medium'} ${(layout.viewPort === 'MOBILE' || layout.viewPort === 'TABLET')&&'self-center'} `}>
                 Welcome to Company Name!
                 {/* --<iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon> */}
               </h1>
@@ -196,7 +216,7 @@ export class SignupComponent {
                         )}
                       </div>
                     )}
-                    <span style={{color:theme.secondaryColor}} class="text-center text-sm leading-6">
+                    <span style={{ color: theme.secondaryColor }} class="text-center text-sm leading-6">
                       Already have an account?{' '}
                       <span
                         style={{
