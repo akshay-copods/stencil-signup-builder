@@ -48,7 +48,7 @@ export class SignupComponent {
     return (
       <div
         style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }}
-        class={`flex rounded-xl ${layout.viewPort === 'TABLET' || layout.viewPort === 'MOBILE' ? 'w-fit' : 'w-full'} font-sans  h-[645px]`}
+        class={`flex rounded-xl ${layout.viewPort === 'TABLET' || layout.viewPort === 'MOBILE' ? 'w-fit' : 'w-full'} font-sans  h-full`}
       >
         <PsudoStyles socialButton={socialButton} submitButton={submitButton} inputField={inputField} />
         {/* Layout Condition will come here */}
