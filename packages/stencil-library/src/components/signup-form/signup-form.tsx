@@ -45,8 +45,7 @@ export class SignupComponent {
                   <img class="max-w-[100px]" src={logo.logoImage} alt="" />
                 ) : (
                   <div class="flex gap-2">
-                    <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon>
-                    <span class="text-[#FAFAFA] leading-6 font-medium">Add Company Logo </span>
+                    <span class="text-[#FAFAFA] leading-6 font-medium">Your Company Logo </span>
                   </div>
                 )}
               </div>
@@ -181,7 +180,6 @@ export class SignupComponent {
                       type="text"
                       name="email"
                       class="inputField border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
-                      onInput={event => this.handleChange(event)}
                     />
                     {!this.email?.includes('@') && this.email?.length > 0 && <span style={{ color: theme.errorColor }}>please enter a valid email</span>}
                   </label>
