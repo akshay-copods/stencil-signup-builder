@@ -1,8 +1,8 @@
 import { Component, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import 'iconify-icon';
+import avtar from '../../assessts/Avatar.svg';
 import { SignupBuilderProps } from './interface';
 import { PsudoStyles } from './psudoStyles';
-import avtar from '../../assessts/Avatar.svg';
 
 //@ts-ignore
 @Component({
@@ -18,14 +18,6 @@ export class SignupComponent {
   @State() email: string = '';
   @State() editTitle = false;
   @Watch('data')
-  handleDivInput() {
-    const value = this.divElement.innerText;
-    this.myChange.emit(value);
-  }
-  handleChange(event) {
-    this.email = event?.target?.value;
-  }
-
   render() {
     const theme = this.data.theme;
     const socialButton = this.data.socialButton;
@@ -35,14 +27,7 @@ export class SignupComponent {
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
     const logo = this.data.logo;
-    console.log(logo);
 
-    document.addEventListener('click', e => {
-      console.log('FIRST IF', e.composedPath()[0]);
-      if (e.composedPath()[0] !== this.divElement) {
-        this.editTitle = false;
-      }
-    });
     console.log({ typography });
     console.log(layout.content);
     return (
@@ -60,8 +45,7 @@ export class SignupComponent {
                   <img class="max-w-[100px]" src={logo.logoImage} alt="" />
                 ) : (
                   <div class="flex gap-2">
-                    <iconify-icon icon="ant-design:plus-circle-outlined" class="text-white" width="27.09" height="27.41"></iconify-icon>
-                    <span class="text-[#FAFAFA] leading-6 font-medium">Add Company Logo </span>
+                    <span class="text-[#FAFAFA] leading-6 font-medium">Your Company Logo </span>
                   </div>
                 )}
               </div>
@@ -70,23 +54,8 @@ export class SignupComponent {
                 {layout.content.map(data => {
                   return data.type === 'STATEMENTS' ? (
                     <div class="flex flex-col gap-2">
-                      <h1
-                        onClick={() => {
-                          this.editTitle = true;
-                          this.divElement.focus();
-                        }}
-                        ref={el => (this.divElement = el)}
-                        onInput={() => this.handleDivInput()}
-                        contentEditable
-                        style={{ fontSize: '30px', fontWeight: typography.title.Bold ? '700' : '400' }}
-                        class="title font-medium text-[#FAFAFA] leading-10 text-3xl"
-                      >
+                      <h1 style={{ fontSize: '30px', fontWeight: typography.title.Bold ? '700' : '400' }} class="title font-medium text-[#FAFAFA] leading-10 text-3xl">
                         {typography.titleText}
-                        {!this.editTitle && (
-                          <span>
-                            <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] cursor-pointer" width="16" height="16"></iconify-icon>
-                          </span>
-                        )}
                       </h1>
                       <span style={{ fontSize: typography.subTitle.fontSize, fontWeight: typography.subTitle.Bold ? '700' : '400' }} class={`text-sm text-[#FAFAFA] leading-5`}>
                         Discover the world's best community of freelancers ad business owners.{' '}
@@ -114,11 +83,6 @@ export class SignupComponent {
                             </div>
                           </div>
                         </div>
-                      </div>
-
-                      <div class="flex ml-auto gap-1">
-                        <iconify-icon icon="ant-design:star-outlined" class="text-[#1890FF]" width="12" height="12"></iconify-icon>
-                        <span class="text-[#1890FF] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
                       </div>
                     </div>
                   ) : null;
@@ -160,7 +124,12 @@ export class SignupComponent {
               </div>
             )}
             <div class="flex flex-col gap-10">
-              <h1 style={{ color: theme.textColor, fontSize: typography.title.fontSize }} class={`leading-6 text-xl ${typography.title.Bold ? 'font-bold' : 'font-medium'} ${(layout.viewPort === 'MOBILE' || layout.viewPort === 'TABLET')&&'self-center'} `}>
+              <h1
+                style={{ color: theme.textColor, fontSize: typography.title.fontSize }}
+                class={`leading-6 text-xl ${typography.title.Bold ? 'font-bold' : 'font-medium'} ${
+                  (layout.viewPort === 'MOBILE' || layout.viewPort === 'TABLET') && 'self-center'
+                } `}
+              >
                 Welcome to Company Name!
                 {/* --<iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon> */}
               </h1>
@@ -251,7 +220,6 @@ export class SignupComponent {
                       type="text"
                       name="email"
                       class="inputField border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
-                      onInput={event => this.handleChange(event)}
                     />
                     {!this.email?.includes('@') && this.email?.length > 0 && <span style={{ color: theme.errorColor }}>please enter a valid email</span>}
                   </label>
