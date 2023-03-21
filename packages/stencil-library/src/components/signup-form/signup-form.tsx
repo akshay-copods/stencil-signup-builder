@@ -228,25 +228,29 @@ export class SignupComponent {
                   >
                     Continue
                   </button>
-                  <span style={{ color: theme.secondaryColor }} class={`text-xs leading-6  font-normal `}>
-                    By continuing, you agree to the
-                    {loginTypes.approvals.map((approval, i) => (
-                      <span>
-                        <span
-                          style={{
-                            fontSize: typography.links.fontSize,
-                            fontWeight: typography.links.Bold ? '700' : '400',
-                            textDecoration: typography.links.style,
-                            color: theme.primaryColor,
-                          }}
-                          class=" opacity-100"
-                        >
-                          {' ' + approval.name}
+                  {loginTypes.approvals.length !== 0 && (
+                    <span style={{ color: theme.secondaryColor }} class={`text-xs leading-6  font-normal `}>
+                      By continuing, you agree to the
+                      {loginTypes.approvals.map((approval, i) => (
+                        <span>
+                          <a
+                            target="_blank"
+                            href={approval.link}
+                            style={{
+                              fontSize: typography.links.fontSize,
+                              fontWeight: typography.links.Bold ? '700' : '400',
+                              textDecoration: typography.links.style,
+                              color: theme.primaryColor,
+                            }}
+                            class=" opacity-100"
+                          >
+                            {' ' + approval.name}
+                          </a>
+                          {loginTypes.approvals.length > 1 && i !== loginTypes.approvals.length - 1 ? <span style={{ color: theme.secondaryColor }}> and</span> : null}
                         </span>
-                        {loginTypes.approvals.length > 1 && i !== loginTypes.approvals.length - 1 ? <span style={{ color: theme.secondaryColor }}> and</span> : null}
-                      </span>
-                    ))}
-                  </span>
+                      ))}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
