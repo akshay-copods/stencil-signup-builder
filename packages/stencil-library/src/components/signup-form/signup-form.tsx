@@ -29,7 +29,6 @@ export class SignupComponent {
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
     const logo = this.data.logo;
-
     return (
       <div
         style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }}
@@ -214,6 +213,58 @@ export class SignupComponent {
                       </div>
                     </label>
                   )}
+                  {inputField.addInputField?.map(data => {
+                    return (
+                      <div>
+                        {data.name !== 'PHONE_NUMBER' && (
+                          <label htmlFor={data.name} class="flex flex-col gap-2">
+                            <span style={{ color: theme.labelColor, fontSize: inputField.label.fontSize, fontWeight: inputField.label.fontWeight }} class="leading-3">
+                              {data.label}
+                            </span>
+                            <input
+                              style={{
+                                borderRadius: `${inputField.defaultState.box.borderRadius.toString()}px`,
+                                borderWidth: `${inputField.defaultState.box.borderSize.toString()}px`,
+                                backgroundColor: inputField.defaultState.backgroundColor,
+                                color: inputField.defaultState.fontColor,
+                                fontSize: inputField.defaultState.fontSize,
+                                fontWeight: inputField.defaultState.fontWeight,
+                              }}
+                              type="text"
+                              name={data.name}
+                              class="inputField border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
+                              placeholder={data.placeholder}
+                            />
+                          </label>
+                        )}
+                        {data.name === 'PHONE_NUMBER' && (
+                          <label htmlFor={data.name} class="flex flex-col gap-2">
+                            <span style={{ color: theme.labelColor, fontSize: inputField.label.fontSize, fontWeight: inputField.label.fontWeight }} class="leading-3">
+                              {data.label}
+                            </span>
+                            <div class="border-[#D9D9D9] inputField border p-2 flex gap-2 items-center">
+                              <div>+91</div>
+                              <hr class="h-5 w-px bg-[#D9D9D9]" />
+                              <input
+                                style={{
+                                  borderRadius: `${inputField.defaultState.box.borderRadius.toString()}px`,
+                                  borderWidth: `${inputField.defaultState.box.borderSize.toString()}px`,
+                                  backgroundColor: inputField.defaultState.backgroundColor,
+                                  color: inputField.defaultState.fontColor,
+                                  fontSize: inputField.defaultState.fontSize,
+                                  fontWeight: inputField.defaultState.fontWeight,
+                                }}
+                                type="text"
+                                name={data.name}
+                                class=" border-none w-full focus:outline-none text-base text-[rgba(0, 0, 0, 0.85)]"
+                                placeholder={data.placeholder}
+                              />
+                            </div>
+                          </label>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
                 <div class="flex flex-col gap-1">
                   <button

@@ -37,6 +37,11 @@ enum Alignment {
   'CENTER' = 'CENTER',
   'RIGHT' = 'RIGHT',
 }
+ enum AddInputFields {
+  NAME = "NAME",
+  COMPANY_NAME = "COMPANY_NAME",
+  PHONE_NUMBER = "PHONE_NUMBER",
+}
 
 type LayoutContentTestimonial = {
   order: number;
@@ -94,7 +99,11 @@ type Theme = {
   textColor: string;
   errorColor: string;
 };
-
+type AddInputField= {
+  label:string,
+  name: AddInputFields;
+  placeholder:string
+}
 type SocialButtonTypes = { position: Position; layout: SocialMediaButtonLayout; styles: ButtonStates };
 
 type SubmitButtonTypes = { styles: ButtonStates };
@@ -107,6 +116,7 @@ type ButtonStates = {
 };
 
 type InputField = {
+  addInputField:AddInputField[]
   label: InputLabelTheme;
   defaultState: InputStateTheme;
   activeState: InputStateTheme;
