@@ -2,7 +2,6 @@ import { Component, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/
 import 'iconify-icon';
 import { SignupBuilderProps } from './interface';
 import { PsudoStyles } from './psudoStyles';
-import avtar from '../../assessts/Avatar.svg';
 
 //@ts-ignore
 @Component({
@@ -16,12 +15,7 @@ export class SignupComponent {
   @Prop() data: SignupBuilderProps;
   @State() showPassword = false;
   @State() email: string = '';
-  @State() editTitle = false;
   @Watch('data')
-  handleDivInput() {
-    const value = this.divElement.innerText;
-    this.myChange.emit(value);
-  }
   handleChange(event) {
     this.email = event?.target?.value;
   }
@@ -35,16 +29,7 @@ export class SignupComponent {
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
     const logo = this.data.logo;
-    console.log(logo);
 
-    document.addEventListener('click', e => {
-      console.log('FIRST IF', e.composedPath()[0]);
-      if (e.composedPath()[0] !== this.divElement) {
-        this.editTitle = false;
-      }
-    });
-    console.log({ typography });
-    console.log(layout.content);
     return (
       <div
         style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }}
@@ -67,76 +52,16 @@ export class SignupComponent {
               </div>
 
               <div class={`flex flex-col ${layout.content.length > 1 ? 'justify-between' : 'justify-center'}  h-full`}>
-                {layout.content.map(data => {
-                  return data.type === 'STATEMENTS' ? (
-                    <div class="flex flex-col gap-2">
-                      <h1
-                        onClick={() => {
-                          this.editTitle = true;
-                          this.divElement.focus();
-                        }}
-                        ref={el => (this.divElement = el)}
-                        onInput={() => this.handleDivInput()}
-                        contentEditable
-                        style={{ fontSize: '30px', fontWeight: typography.title.Bold ? '700' : '400' }}
-                        class="title font-medium text-[#FAFAFA] leading-10 text-3xl"
-                      >
-                        {typography.titleText}
-                        {!this.editTitle && (
-                          <span>
-                            <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] cursor-pointer" width="16" height="16"></iconify-icon>
-                          </span>
-                        )}
-                      </h1>
-                      <span style={{ fontSize: typography.subTitle.fontSize, fontWeight: typography.subTitle.Bold ? '700' : '400' }} class={`text-sm text-[#FAFAFA] leading-5`}>
-                        Discover the world's best community of freelancers ad business owners.{' '}
-                        {/* <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] mb-[-4px]" width="16" height="16"></iconify-icon> */}
-                      </span>
-                    </div>
-                  ) : null;
-                })}
-                {layout.content.map(data => {
-                  console.log(data.type.includes('TESTIMONALS'));
-                  return data.type === 'TESTIMONALS' ? (
-                    <div class="flex flex-col-reverse gap-1">
-                      <div class=" px-8 rounded-lg bg-[#0B0E49] pt-7 pb-16 ">
-                        <div class="flex flex-col gap-6 items-center ">
-                          <span class=" text-[#FAFAFA] text-xs">Discover the world's best community of freelancers ad business owners.</span>
-                          <div class="flex gap-2 w-full">
-                            <img src={avtar} alt="" />
-                            <div>
-                              <h4 style={{ fontSize: this.data.typography.subTitle.fontSize }} class="text-white">
-                                Arun Raj
-                              </h4>
-                              <span style={{ fontSize: this.data.typography.normalText.fontSize }} class="text-white">
-                                Senior Product Manger @ABSoftwares
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="flex ml-auto gap-1">
-                        <iconify-icon icon="ant-design:star-outlined" class="text-[#1890FF]" width="12" height="12"></iconify-icon>
-                        <span class="text-[#1890FF] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
-                      </div>
-                    </div>
-                  ) : null;
-                })}
-
-                {layout.content.map(data => {
-                  console.log(data.type.includes('LOGO'));
-                  return data.type === 'LOGO' ? (
-                    <div class="grid gap-8 grid-cols-6">
-                      {data.content.map(contentData => {
-                        return (
-                          <div class="grid justify-center col-span-2">
-                            <img class="w-12 " src={contentData.imageUrl} alt="" />
-                          </div>
-                        );
-                      })}
-                    </div>
-                  ) : null;
+                {layout.content.map(i => {
+                  if (i.type === 'STATEMENTS') {
+                    return <statement-component data={i} typography={typography}></statement-component>;
+                  }
+                  if (i.type === 'TESTIMONALS') {
+                    return <testimonal-component data={i} typography={typography}></testimonal-component>;
+                  }
+                  if (i.type === 'LOGO') {
+                    return <logo-component data={i}></logo-component>;
+                  }
                 })}
               </div>
             </div>
@@ -160,7 +85,12 @@ export class SignupComponent {
               </div>
             )}
             <div class="flex flex-col gap-10">
-              <h1 style={{ color: theme.textColor, fontSize: typography.title.fontSize }} class={`leading-6 text-xl ${typography.title.Bold ? 'font-bold' : 'font-medium'} ${(layout.viewPort === 'MOBILE' || layout.viewPort === 'TABLET')&&'self-center'} `}>
+              <h1
+                style={{ color: theme.textColor, fontSize: typography.title.fontSize }}
+                class={`leading-6 text-xl ${typography.title.Bold ? 'font-bold' : 'font-medium'} ${
+                  (layout.viewPort === 'MOBILE' || layout.viewPort === 'TABLET') && 'self-center'
+                } `}
+              >
                 Welcome to Company Name!
                 {/* --<iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon> */}
               </h1>

@@ -8,6 +8,16 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { SignupBuilderProps } from "./components/signup-form/interface";
 export { SignupBuilderProps } from "./components/signup-form/interface";
 export namespace Components {
+    interface CarouselComponent {
+        "content": any;
+        /**
+          * The first name
+         */
+        "first": string;
+    }
+    interface LogoComponent {
+        "data": any;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -27,12 +37,32 @@ export namespace Components {
     interface SignupComponent {
         "data": SignupBuilderProps;
     }
+    interface StatementComponent {
+        "data": any;
+        "typography": any;
+    }
+    interface TestimonalComponent {
+        "data": any;
+        "typography": any;
+    }
 }
 export interface SignupComponentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSignupComponentElement;
 }
 declare global {
+    interface HTMLCarouselComponentElement extends Components.CarouselComponent, HTMLStencilElement {
+    }
+    var HTMLCarouselComponentElement: {
+        prototype: HTMLCarouselComponentElement;
+        new (): HTMLCarouselComponentElement;
+    };
+    interface HTMLLogoComponentElement extends Components.LogoComponent, HTMLStencilElement {
+    }
+    var HTMLLogoComponentElement: {
+        prototype: HTMLLogoComponentElement;
+        new (): HTMLLogoComponentElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -51,13 +81,39 @@ declare global {
         prototype: HTMLSignupComponentElement;
         new (): HTMLSignupComponentElement;
     };
+    interface HTMLStatementComponentElement extends Components.StatementComponent, HTMLStencilElement {
+    }
+    var HTMLStatementComponentElement: {
+        prototype: HTMLStatementComponentElement;
+        new (): HTMLStatementComponentElement;
+    };
+    interface HTMLTestimonalComponentElement extends Components.TestimonalComponent, HTMLStencilElement {
+    }
+    var HTMLTestimonalComponentElement: {
+        prototype: HTMLTestimonalComponentElement;
+        new (): HTMLTestimonalComponentElement;
+    };
     interface HTMLElementTagNameMap {
+        "carousel-component": HTMLCarouselComponentElement;
+        "logo-component": HTMLLogoComponentElement;
         "my-component": HTMLMyComponentElement;
         "second-template": HTMLSecondTemplateElement;
         "signup-component": HTMLSignupComponentElement;
+        "statement-component": HTMLStatementComponentElement;
+        "testimonal-component": HTMLTestimonalComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CarouselComponent {
+        "content"?: any;
+        /**
+          * The first name
+         */
+        "first"?: string;
+    }
+    interface LogoComponent {
+        "data"?: any;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -78,19 +134,35 @@ declare namespace LocalJSX {
         "data"?: SignupBuilderProps;
         "onMyChange"?: (event: SignupComponentCustomEvent<any>) => void;
     }
+    interface StatementComponent {
+        "data"?: any;
+        "typography"?: any;
+    }
+    interface TestimonalComponent {
+        "data"?: any;
+        "typography"?: any;
+    }
     interface IntrinsicElements {
+        "carousel-component": CarouselComponent;
+        "logo-component": LogoComponent;
         "my-component": MyComponent;
         "second-template": SecondTemplate;
         "signup-component": SignupComponent;
+        "statement-component": StatementComponent;
+        "testimonal-component": TestimonalComponent;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "carousel-component": LocalJSX.CarouselComponent & JSXBase.HTMLAttributes<HTMLCarouselComponentElement>;
+            "logo-component": LocalJSX.LogoComponent & JSXBase.HTMLAttributes<HTMLLogoComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "second-template": LocalJSX.SecondTemplate & JSXBase.HTMLAttributes<HTMLSecondTemplateElement>;
             "signup-component": LocalJSX.SignupComponent & JSXBase.HTMLAttributes<HTMLSignupComponentElement>;
+            "statement-component": LocalJSX.StatementComponent & JSXBase.HTMLAttributes<HTMLStatementComponentElement>;
+            "testimonal-component": LocalJSX.TestimonalComponent & JSXBase.HTMLAttributes<HTMLTestimonalComponentElement>;
         }
     }
 }
