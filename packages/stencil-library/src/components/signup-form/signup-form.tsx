@@ -177,7 +177,7 @@ console.log(brandAssests)
                         fontWeight: inputField.defaultState.fontWeight,
                       }}
                       type="text"
-                      onInput={event => this.handleChange(event)}
+                      onChange={event => this.handleChange(event)}
                       name="email"
                       class="inputField border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
                     />
