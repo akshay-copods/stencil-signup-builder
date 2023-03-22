@@ -202,15 +202,15 @@ console.log(brandAssests)
                           type={this.showPassword ? 'text' : 'password'}
                           class="inputField w-full border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
                         />
-                        <iconify-icon
-                          onClick={() => {
-                            this.showPassword = !this.showPassword;
-                          }}
-                          icon="ant-design:eye-outlined"
-                          class="absolute right-3 top-3 cursor-pointer text-[#00000073]"
-                          width="16"
-                          height="16"
-                        ></iconify-icon>
+                         <button
+                        type="button"
+                        class="absolute text-[#00000073] right-3 top-[11px]"
+                        onClick={() => {
+                          this.showPassword = !this.showPassword;
+                        }}
+                      >
+                        {this.showPassword ? <iconify-icon  icon="mdi:eye-off-outline"></iconify-icon> : <iconify-icon icon="ic:outline-remove-red-eye"></iconify-icon>}
+                      </button>
                       </div>
                     </label>
                   )}
