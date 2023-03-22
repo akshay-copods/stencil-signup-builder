@@ -7,7 +7,7 @@ enum SocialMediaButtonLayout {
   'EQUAL_SPLIT' = 'EQUAL_SPLIT',
   'ONE_PRIMARY' = 'ONE_PRIMARY',
 }
-
+ 
 enum FontFamily {
   Roboto = "'Roboto', sans-serif",
   OpenSans = 'Open Sans',
@@ -161,11 +161,33 @@ type LoginType = {
   loginMethods: LoginMethods;
   approvals: Approval[];
 };
- interface LogoState {
-  logoImage: string;
-  alignment: Alignment;
 
-}
+
+
+export type Logo = {
+  imageUrl: string;
+  alignment: Alignment;
+};
+type BrandAssetStoreState = {
+  logoImage: {
+    imageUrl: string;
+    alignment: Alignment;
+  };
+  welcomeMessage: string;
+
+  setWelcomeMessage: (message: string) => void;
+  setLogoImage: (logo: string) => void;
+  setLogoAlignment: (alignment: Alignment) => void;
+  getLogoImage: () => Logo;
+  getWelcomeMessage: () => string;
+  getBrandAssets: () => {
+    logoImage: {
+      imageUrl: string;
+      alignment: Alignment;
+    };
+    welcomeMessage: string;
+  };
+};
 type Layout = { gridLayout: Grid; contentBackground: string; gridContentWidth: string; viewPort: ViewPort; content: LayoutContent[] };
 
 export type SignupBuilderProps = {
@@ -176,7 +198,7 @@ export type SignupBuilderProps = {
   typography: Typography;
   loginTypes: LoginType;
   layout: Layout;
-    logo:LogoState
+  brandAssests:BrandAssetStoreState
 };
 
 

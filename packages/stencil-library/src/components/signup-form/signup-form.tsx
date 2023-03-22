@@ -27,8 +27,8 @@ export class SignupComponent {
     const typography = this.data.typography;
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
-    const logo = this.data.logo;
-console.log(this.email)
+    const brandAssests = this.data.brandAssests
+console.log(brandAssests)
 
     return (
       <div
@@ -40,9 +40,9 @@ console.log(this.email)
         {layout.gridLayout === 'SPLIT' && (layout.viewPort === 'FULLSCREEN' || layout.viewPort === 'DESKTOP') && (
           <div style={{ width: `${layout.gridContentWidth}%` }} class="bg-[#070930] rounded-r-lg">
             <div class="flex flex-col gap-20 pt-9 pb-16 px-16 h-full">
-              <div class={`${logo.alignment === 'CENTER' ? 'flex justify-center' : logo.alignment === 'RIGHT' ? 'flex justify-end' : null}`}>
-                {logo.logoImage ? (
-                  <img class="max-w-[100px]" src={logo.logoImage} alt="" />
+              <div class={`${brandAssests.logoImage.alignment === 'CENTER' ? 'flex justify-center' : brandAssests.logoImage.alignment === 'RIGHT' ? 'flex justify-end' : null}`}>
+                {brandAssests.logoImage.imageUrl ? (
+                  <img class="max-w-[100px]" src={brandAssests.logoImage.imageUrl} alt="" />
                 ) : (
                   <div class="flex gap-2">
                     <span class="text-[#FAFAFA] leading-6 font-medium">Your Company Logo </span>
@@ -72,8 +72,8 @@ console.log(this.email)
           <div class={`flex flex-col gap-8  ${layout.viewPort !== 'MOBILE' && 'w-[480px]'}`}>
             {(layout.viewPort === 'MOBILE' || layout.viewPort === 'TABLET') && (
               <div class="flex items-center justify-center">
-                {logo.logoImage ? (
-                  <img class="max-w-[100px]" src={logo.logoImage} alt="" />
+                {brandAssests.logoImage.imageUrl ? (
+                  <img class="max-w-[100px]" src={brandAssests.logoImage.imageUrl} alt="" />
                 ) : (
                   <div class="border items-center px-4  flex flex-col gap-2 rounded-[52px] w-fit py-4">
                     <iconify-icon icon="ant-design:plus-circle-outlined" class="text-black" width="27.09" height="27.41"></iconify-icon>
