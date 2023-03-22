@@ -43,11 +43,6 @@ export class TestimonalComponent {
               </div>
             </div>
           </div>
-
-          <div class="flex ml-auto gap-1">
-            <iconify-icon icon="ant-design:star-outlined" class="text-[#1890FF]" width="12" height="12"></iconify-icon>
-            <span class="text-[#1890FF] text-xs leading-3 font-normal opacity-80">View Custom Layouts</span>
-          </div>
         </div>
         <div class="flex gap-2 justify-center items-center">
           {this.data.content.map((slide, slideIndex) => (
