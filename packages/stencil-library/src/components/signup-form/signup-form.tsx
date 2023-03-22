@@ -89,7 +89,7 @@ console.log(brandAssests)
                   (layout.viewPort === 'MOBILE' || layout.viewPort === 'TABLET') && 'self-center'
                 } `}
               >
-                Welcome to Company Name!
+                {brandAssests.welcomeMessage}
                 {/* --<iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff]" width="16" height="16"></iconify-icon> */}
               </h1>
               {socialButton.position === 'TOP' && loginTypes.socialLoginTypes.length !== 0 && (
