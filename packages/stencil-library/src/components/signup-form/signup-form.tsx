@@ -2,7 +2,6 @@ import { Component, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/
 import 'iconify-icon';
 import { SignupBuilderProps } from './interface';
 import { PsudoStyles } from './psudoStyles';
-
 //@ts-ignore
 @Component({
   tag: 'signup-component',
@@ -29,6 +28,8 @@ export class SignupComponent {
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
     const logo = this.data.logo;
+
+
     return (
       <div
         style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }}
@@ -48,7 +49,6 @@ export class SignupComponent {
                   </div>
                 )}
               </div>
-
               <div class={`flex flex-col ${layout.content.length > 1 ? 'justify-between' : 'justify-center'}  h-full`}>
                 {layout.content.map(i => {
                   if (i.type === 'STATEMENTS') {
@@ -254,11 +254,10 @@ export class SignupComponent {
                                   fontSize: inputField.defaultState.fontSize,
                                   fontWeight: inputField.defaultState.fontWeight,
                                 }}
-                                type="text"
+                                type="tel"
                                 name={data.name}
                                 class=" border-none w-full focus:outline-none text-base text-[rgba(0, 0, 0, 0.85)]"
-                                placeholder={data.placeholder}
-                              />
+                                placeholder={data.placeholder}                              />
                             </div>
                           </label>
                         )}
