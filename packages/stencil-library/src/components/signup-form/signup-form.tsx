@@ -28,7 +28,7 @@ export class SignupComponent {
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
     const logo = this.data.logo;
-
+console.log(this.email)
 
     return (
       <div
@@ -177,6 +177,7 @@ export class SignupComponent {
                         fontWeight: inputField.defaultState.fontWeight,
                       }}
                       type="text"
+                      onChange={event => this.handleChange(event)}
                       name="email"
                       class="inputField border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
                     />
