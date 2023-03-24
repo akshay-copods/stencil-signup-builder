@@ -27,9 +27,7 @@ export class SignupComponent {
     const typography = this.data.typography;
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
-    const brandAssests = this.data.brandAssests
-console.log(brandAssests)
-
+    const brandAssests = this.data.brandAssests;
     return (
       <div
         style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }}
@@ -49,17 +47,16 @@ console.log(brandAssests)
                   </div>
                 )}
               </div>
+
               <div class={`flex flex-col ${layout.content.length > 1 ? 'justify-between' : 'justify-center'}  h-full`}>
-                {layout.content.map(i => {
+                {brandAssests.content.map(i => {
                   if (i.type === 'STATEMENTS') {
-                    return <statement-component data={i} typography={typography}></statement-component>;
+                    return <statement-component data={brandAssests.statements} typography={typography}></statement-component>;
                   }
                   if (i.type === 'TESTIMONALS') {
-                    return <testimonal-component data={i} typography={typography}></testimonal-component>;
+                    return <testimonal-component data={brandAssests.testimonials} typography={typography}></testimonal-component>;
                   }
-                  if (i.type === 'LOGO') {
-                    return <logo-component data={i}></logo-component>;
-                  }
+                
                 })}
               </div>
             </div>
@@ -202,15 +199,15 @@ console.log(brandAssests)
                           type={this.showPassword ? 'text' : 'password'}
                           class="inputField w-full border-[#D9D9D9] px-3 py-2 leading-6 text-base text-[rgba(0, 0, 0, 0.85)]"
                         />
-                         <button
-                        type="button"
-                        class="absolute text-[#00000073] right-3 top-[11px]"
-                        onClick={() => {
-                          this.showPassword = !this.showPassword;
-                        }}
-                      >
-                        {this.showPassword ? <iconify-icon  icon="mdi:eye-off-outline"></iconify-icon> : <iconify-icon icon="ic:outline-remove-red-eye"></iconify-icon>}
-                      </button>
+                        <button
+                          type="button"
+                          class="absolute text-[#00000073] right-3 top-[11px]"
+                          onClick={() => {
+                            this.showPassword = !this.showPassword;
+                          }}
+                        >
+                          {this.showPassword ? <iconify-icon icon="mdi:eye-off-outline"></iconify-icon> : <iconify-icon icon="ic:outline-remove-red-eye"></iconify-icon>}
+                        </button>
                       </div>
                     </label>
                   )}
@@ -258,7 +255,8 @@ console.log(brandAssests)
                                 type="tel"
                                 name={data.name}
                                 class=" border-none w-full focus:outline-none text-base text-[rgba(0, 0, 0, 0.85)]"
-                                placeholder={data.placeholder}                              />
+                                placeholder={data.placeholder}
+                              />
                             </div>
                           </label>
                         )}

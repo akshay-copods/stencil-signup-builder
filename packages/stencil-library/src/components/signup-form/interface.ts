@@ -7,7 +7,7 @@ enum SocialMediaButtonLayout {
   'EQUAL_SPLIT' = 'EQUAL_SPLIT',
   'ONE_PRIMARY' = 'ONE_PRIMARY',
 }
- 
+
 enum FontFamily {
   Roboto = "'Roboto', sans-serif",
   OpenSans = 'Open Sans',
@@ -37,12 +37,16 @@ enum Alignment {
   'CENTER' = 'CENTER',
   'RIGHT' = 'RIGHT',
 }
- enum AddInputFields {
-  NAME = "NAME",
-  COMPANY_NAME = "COMPANY_NAME",
-  PHONE_NUMBER = "PHONE_NUMBER",
+enum AddInputFields {
+  NAME = 'NAME',
+  COMPANY_NAME = 'COMPANY_NAME',
+  PHONE_NUMBER = 'PHONE_NUMBER',
 }
 
+export enum Shape {
+  'SQUARE' = 'SQUARE',
+  'CIRCLE' = 'CIRCLE',
+}
 type LayoutContentTestimonial = {
   order: number;
   personName: string;
@@ -51,7 +55,19 @@ type LayoutContentTestimonial = {
   personCompany: string;
   personQuote: string;
 };
-
+type User = {
+  personImage: string;
+  personDetails: string;
+  personDesignation: string;
+  personQuote: string;
+};
+type TestimonialStyling = {
+  position: Position;
+  imageShape: Shape;
+  fontColor: string;
+  backgroundColor: string;
+  alignment: Alignment;
+};
 type LayoutContentLogo = {
   order: number;
   imageUrl: string;
@@ -99,11 +115,11 @@ type Theme = {
   textColor: string;
   errorColor: string;
 };
-type AddInputField= {
-  label:string,
+type AddInputField = {
+  label: string;
   name: AddInputFields;
-  placeholder:string
-}
+  placeholder: string;
+};
 type SocialButtonTypes = { position: Position; layout: SocialMediaButtonLayout; styles: ButtonStates };
 
 type SubmitButtonTypes = { styles: ButtonStates };
@@ -116,7 +132,7 @@ type ButtonStates = {
 };
 
 type InputField = {
-  addInputField:AddInputField[]
+  addInputField: AddInputField[];
   label: InputLabelTheme;
   defaultState: InputStateTheme;
   activeState: InputStateTheme;
@@ -162,11 +178,14 @@ type LoginType = {
   approvals: Approval[];
 };
 
-
-
 export type Logo = {
   imageUrl: string;
   alignment: Alignment;
+};
+export type Content = {
+  type: string;
+  name: string;
+  checked: boolean;
 };
 type BrandAssetStoreState = {
   logoImage: {
@@ -174,18 +193,43 @@ type BrandAssetStoreState = {
     alignment: Alignment;
   };
   welcomeMessage: string;
-
+  testimonials: {
+    users: User[];
+    styling: TestimonialStyling;
+  };
+  statements: {
+    title: string;
+    subtitle: string;
+  };
+  content: Content[];
   setWelcomeMessage: (message: string) => void;
   setLogoImage: (logo: string) => void;
+  getContent: () => Content[];
   setLogoAlignment: (alignment: Alignment) => void;
   getLogoImage: () => Logo;
   getWelcomeMessage: () => string;
+  setStatementsTitle: (title: string) => void;
+  setStatementsSubtitle: (title: string) => void;
+  getStatements: () => { title: string; subtitle: string };
+  setTestimonial: (testimonial: User) => void;
+  setTestiMonialStyling: (styling: TestimonialStyling) => void;
+  getTestimonial: () => User[];
+  getTestimonialStyling: () => TestimonialStyling;
   getBrandAssets: () => {
     logoImage: {
       imageUrl: string;
       alignment: Alignment;
     };
     welcomeMessage: string;
+    testimonials: {
+      users: User[];
+      styling: TestimonialStyling;
+    };
+    statements: {
+      title: string;
+      subtitle: string;
+    };
+    content:Content[]
   };
 };
 type Layout = { gridLayout: Grid; contentBackground: string; gridContentWidth: string; viewPort: ViewPort; content: LayoutContent[] };
@@ -198,7 +242,5 @@ export type SignupBuilderProps = {
   typography: Typography;
   loginTypes: LoginType;
   layout: Layout;
-  brandAssests:BrandAssetStoreState
+  brandAssests: BrandAssetStoreState;
 };
-
-

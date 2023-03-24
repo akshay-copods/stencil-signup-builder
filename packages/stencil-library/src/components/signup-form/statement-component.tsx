@@ -13,10 +13,10 @@ export class StatementComponent {
     return (
       <div class="flex flex-col gap-2">
         <h1 style={{ fontSize: '30px', fontWeight: this.typography.title.Bold ? '700' : '400' }} class="title font-medium text-[#FAFAFA] leading-10 text-3xl">
-          {this.typography.titleText}
+          {this.data.title}
         </h1>
         <span style={{ fontSize: this.typography.subTitle.fontSize, fontWeight: this.typography.subTitle.Bold ? '700' : '400' }} class={`text-sm text-[#FAFAFA] leading-5`}>
-          Discover the world's best community of freelancers ad business owners.{' '}
+          {this.data.subtitle}{' '}
           {/* <iconify-icon icon="ant-design:edit-outlined" class="text-[#1890ff] mb-[-4px]" width="16" height="16"></iconify-icon> */}
         </span>
       </div>
