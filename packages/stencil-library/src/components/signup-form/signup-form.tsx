@@ -18,6 +18,11 @@ export class SignupComponent {
   handleChange(event) {
     this.email = event?.target?.value;
   }
+  @State() currentIndex: number = 0;
+
+  gotToSlide(slideIndex) {
+    this.currentIndex = slideIndex;
+  }
 
   render() {
     const theme = this.data.theme;
@@ -28,6 +33,12 @@ export class SignupComponent {
     const loginTypes = this.data.loginTypes;
     const layout = this.data.layout;
     const brandAssests = this.data.brandAssests;
+    const dotStyle = {
+      margin: '0 3px',
+      cursor: 'pointer',
+      fontSize: '20px',
+    };
+    const content = brandAssests.testimonials.users[this.currentIndex];
     return (
       <div
         style={{ fontFamily: typography.fontFamily, backgroundColor: theme.backgroundColor }}
@@ -54,9 +65,54 @@ export class SignupComponent {
                     return <statement-component data={brandAssests.statements} typography={typography}></statement-component>;
                   }
                   if (i.type === 'TESTIMONALS') {
-                    return <testimonal-component data={brandAssests.testimonials} typography={typography}></testimonal-component>;
+                    return (
+                      <div>
+                        <div class="flex flex-col-reverse  gap-1">
+                          <div style={{ backgroundColor: brandAssests.testimonials.styling.backgroundColor }} class=" p-5 rounded-lg">
+                            <div class={`flex  gap-6 ${brandAssests.testimonials.styling.position === 'BOTTOM' ? 'flex-col' : 'flex-col-reverse'}  `}>
+                              <span style={{ textAlign: brandAssests.testimonials.styling.alignment, color: brandAssests.testimonials.styling.fontColor }} class="  text-xs">
+                                " {content.personQuote} "
+                              </span>
+                              <div
+                                class={`flex gap-2 items-center w-full ${brandAssests.testimonials.styling.alignment === 'LEFT' ? 'flex-row' : 'flex-row-reverse'} ${
+                                  brandAssests.testimonials.styling.alignment === 'CENTER' ? 'flex-col' : 'flex-row'
+                                }`}
+                              >
+                                <img
+                                  style={{ borderRadius: brandAssests.testimonials.styling.imageShape === 'CIRCLE' ? '50%' : '0px' }}
+                                  class="w-10 h-10"
+                                  src={content.personImage}
+                                  alt=""
+                                />
+                                <div>
+                                  <h4 style={{ fontSize: typography.subTitle.fontSize, color: brandAssests.testimonials.styling.fontColor }}>{content.personDetails} </h4>
+                                  <span style={{ fontSize: typography.normalText.fontSize, color: brandAssests.testimonials.styling.fontColor }}>{content.personDesignation}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex gap-2 justify-center items-center">
+                          {brandAssests.testimonials.users.map((slide: any, slideIndex) => {
+                            console.log(slide,'slide')
+                            return(
+
+                            <div
+                              id={slide}
+                              style={dotStyle}
+                              key={slideIndex}
+                              onClick={() => {
+                                this.gotToSlide(slideIndex);
+                              }}
+                            >
+                              <iconify-icon icon="carbon:dot-mark" class={`w-[5px] h-[5px] ${slideIndex === this.currentIndex ? 'text-white' : 'text-gray-400'}`}></iconify-icon>
+                            </div>
+                            )
+                  })}
+                        </div>
+                      </div>
+                    );
                   }
-                
                 })}
               </div>
             </div>
