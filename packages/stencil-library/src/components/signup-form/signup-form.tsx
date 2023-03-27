@@ -94,20 +94,19 @@ export class SignupComponent {
                         </div>
                         <div class="flex gap-2 justify-center items-center">
                           {brandAssests.testimonials.users.map((slide: any, slideIndex) => {
-                            return(
-
-                            <div
-                              id={slide}
-                              style={dotStyle}
-                              key={slideIndex}
-                              onClick={() => {
-                                this.gotToSlide(slideIndex);
-                              }}
-                            >
-                              <iconify-icon icon="carbon:dot-mark" class={`w-[5px] h-[5px] ${slideIndex === this.currentIndex ? 'text-white' : 'text-gray-400'}`}></iconify-icon>
-                            </div>
-                            )
-                  })}
+                            return (
+                              <div
+                                id={slide}
+                                style={dotStyle}
+                                key={slideIndex}
+                                onClick={() => {
+                                  this.gotToSlide(slideIndex);
+                                }}
+                              >
+                                <iconify-icon icon="carbon:dot-mark" class={`w-[5px] h-[5px] ${slideIndex === this.currentIndex ? 'text-white' : 'text-gray-400'}`}></iconify-icon>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     );
