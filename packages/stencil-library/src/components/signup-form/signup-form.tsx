@@ -85,7 +85,7 @@ export class SignupComponent {
                                   alt=""
                                 />
                                 <div>
-                                  <h4 style={{ fontSize: typography.subTitle.fontSize, color: brandAssests.testimonials.styling.fontColor }}>{content.personDetails} </h4>
+                                  <h2 style={{ fontSize: typography.subTitle.fontSize, color: brandAssests.testimonials.styling.fontColor }}>{content.personDetails} </h2>
                                   <span style={{ fontSize: typography.normalText.fontSize, color: brandAssests.testimonials.styling.fontColor }}>{content.personDesignation}</span>
                                 </div>
                               </div>
@@ -259,6 +259,8 @@ export class SignupComponent {
                           onClick={() => {
                             this.showPassword = !this.showPassword;
                           }}
+                          tabIndex={0}
+                          aria-label='password show or hide button'
                         >
                           {this.showPassword ? <iconify-icon icon="mdi:eye-off-outline"></iconify-icon> : <iconify-icon icon="ic:outline-remove-red-eye"></iconify-icon>}
                         </button>
