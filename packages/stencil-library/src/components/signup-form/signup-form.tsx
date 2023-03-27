@@ -94,7 +94,6 @@ export class SignupComponent {
                         </div>
                         <div class="flex gap-2 justify-center items-center">
                           {brandAssests.testimonials.users.map((slide: any, slideIndex) => {
-                            console.log(slide,'slide')
                             return(
 
                             <div

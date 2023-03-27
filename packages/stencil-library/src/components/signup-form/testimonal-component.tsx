@@ -21,7 +21,6 @@ export class TestimonalComponent {
       cursor: 'pointer',
       fontSize: '20px',
     };
-    console.log(this.data,'data')
     const content = this.data.users[this.currentIndex];
     return (
       <div>
