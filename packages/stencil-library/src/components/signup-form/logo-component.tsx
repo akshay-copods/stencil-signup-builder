@@ -10,7 +10,6 @@ export class LogoComponent {
   @Prop() data: any;
 
   render() {
-    console.log(this.data,'this')
     return (
       <div class="grid gap-8 grid-cols-6">
         {this.data.map(contentData => {

@@ -38,6 +38,7 @@ export class SignupComponent {
       cursor: 'pointer',
       fontSize: '20px',
     };
+    console.log(brandAssests.logos,'users')
     const content = brandAssests.testimonials.users[this.currentIndex];
     return (
       <div
