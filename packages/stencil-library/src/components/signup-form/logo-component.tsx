@@ -10,9 +10,10 @@ export class LogoComponent {
   @Prop() data: any;
 
   render() {
+    console.log(this.data,'this')
     return (
       <div class="grid gap-8 grid-cols-6">
-        {this.data.content.map(contentData => {
+        {this.data.map(contentData => {
           return (
             <div class="grid justify-center col-span-2">
               <img class="w-12 " src={contentData.imageUrl} alt="" />

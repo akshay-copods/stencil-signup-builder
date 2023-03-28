@@ -201,6 +201,10 @@ type BrandAssetStoreState = {
     title: string;
     subtitle: string;
   };
+  logos: {
+    id: string;
+    imageUrl: string;
+  }[];
   content: Content[];
   setWelcomeMessage: (message: string) => void;
   setLogoImage: (logo: string) => void;

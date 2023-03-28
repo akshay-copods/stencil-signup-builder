@@ -111,6 +111,9 @@ export class SignupComponent {
                       </div>
                     );
                   }
+                  if (i.type === 'LOGO') {
+                    return <logo-component data={brandAssests.logos}></logo-component>;
+                  }
                 })}
               </div>
             </div>
