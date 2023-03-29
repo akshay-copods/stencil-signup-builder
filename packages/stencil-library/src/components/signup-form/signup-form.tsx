@@ -87,7 +87,7 @@ export class SignupComponent {
                                 />
                                 <div>
                                   <h2 style={{ fontSize: typography.subTitle.fontSize, color: brandAssests.testimonials.styling.fontColor }}>{content.personDetails} </h2>
-                                  <span style={{ fontSize: typography.normalText.fontSize, color: brandAssests.testimonials.styling.fontColor }}>{content.personDesignation}</span>
+                                  <span style={{ fontSize: '14px', color: brandAssests.testimonials.styling.fontColor }}>{content.personDesignation}</span>
                                 </div>
                               </div>
                             </div>
@@ -199,7 +199,7 @@ export class SignupComponent {
                         )}
                       </div>
                     )}
-                    <span style={{ color: theme.secondaryColor }} class="text-center text-sm leading-6">
+                    <span style={{ color: '#00000099' }} class="text-center text-sm leading-6">
                       Already have an account?{' '}
                       <span
                         style={{
@@ -338,7 +338,7 @@ export class SignupComponent {
                     Continue
                   </button>
                   {loginTypes.approvals.length !== 0 && (
-                    <span style={{ color: theme.secondaryColor }} class={`text-xs leading-6  font-normal `}>
+                    <span style={{ color:'#00000099' }} class={`text-xs leading-6  font-normal `}>
                       By continuing, you agree to the
                       {loginTypes.approvals.map((approval, i) => (
                         <span>
@@ -355,7 +355,7 @@ export class SignupComponent {
                           >
                             {' ' + approval.name}
                           </a>
-                          {loginTypes.approvals.length > 1 && i !== loginTypes.approvals.length - 1 ? <span style={{ color: theme.secondaryColor }}> and</span> : null}
+                          {loginTypes.approvals.length > 1 && i !== loginTypes.approvals.length - 1 ? <span style={{ color: '#00000099' }}> and</span> : null}
                         </span>
                       ))}
                     </span>
@@ -416,7 +416,7 @@ export class SignupComponent {
                     </div>
                   )}
                 </div>
-                <span style={{ color: theme.secondaryColor }} class="text-center  text-sm leading-6">
+                <span style={{ color: '#00000099' }} class="text-center  text-sm leading-6">
                   Already have an account?{' '}
                   <span
                     style={{
