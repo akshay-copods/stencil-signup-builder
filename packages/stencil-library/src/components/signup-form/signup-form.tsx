@@ -258,14 +258,14 @@ export class SignupComponent {
                         />
                         <button
                           type="button"
-                          class="absolute text-[#00000073] right-3 top-[11px]"
+                          class="absolute flex items-center justify-center text-[#00000073] right-3 top-[25%]"
                           onClick={() => {
                             this.showPassword = !this.showPassword;
                           }}
                           tabIndex={0}
                           aria-label='password show or hide button'
                         >
-                          {this.showPassword ? <iconify-icon icon="mdi:eye-off-outline"></iconify-icon> : <iconify-icon icon="ic:outline-remove-red-eye"></iconify-icon>}
+                          {this.showPassword ? <iconify-icon height="14px"   icon="mdi:eye-off-outline"></iconify-icon> : <iconify-icon height="14px" icon="ic:outline-remove-red-eye"></iconify-icon>}
                         </button>
                       </div>
                     </label>
