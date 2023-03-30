@@ -59,7 +59,7 @@ export class SignupComponent {
                 )}
               </div>
 
-              <div class={`flex flex-col ${layout.content.length > 1 ? 'justify-between' : 'justify-center'}  h-full`}>
+              <div class={`flex flex-col ${layout.content.length > 1 ? 'justify-between gap-20' : 'justify-center'}  h-full`}>
                 {brandAssests.content.map(i => {
                   if (i.type === 'STATEMENTS') {
                     return <statement-component data={brandAssests.statements} typography={typography}></statement-component>;
@@ -332,7 +332,7 @@ export class SignupComponent {
                       fontWeight: submitButton.styles.defaultState.fontWeight,
                       fontSize: submitButton.styles.defaultState.fontSize,
                     }}
-                    class="submitButton border border-[#9254DE] px-4 py-2"
+                    class="submitButton border border-[#9254DE] h-10 flex justify-center items-center px-4 py-2"
                   >
                     Continue
                   </button>
