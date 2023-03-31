@@ -323,7 +323,7 @@ export class SignupComponent {
                     );
                   })}
                 </div>
-                <div class="flex flex-col gap-1">
+                <div class={`flex ${ layout.viewPort === 'MOBILE'?'gap-4':'gap-1'} flex-col`}>
                   <button
                     style={{
                       backgroundColor: submitButton.styles.defaultState.backgroundColor,
@@ -332,12 +332,12 @@ export class SignupComponent {
                       fontWeight: submitButton.styles.defaultState.fontWeight,
                       fontSize: submitButton.styles.defaultState.fontSize,
                     }}
-                    class="submitButton border border-[#9254DE] h-10 flex justify-center items-center px-4 py-2"
+                    class="submitButton border border-[#d9d9d9] h-10 flex justify-center items-center px-4 py-2"
                   >
                     Continue
                   </button>
                   {loginTypes.approvals.length !== 0 && (
-                    <span style={{ color: theme.secondaryColor }} class={`text-xs leading-6  font-normal `}>
+                    <span style={{ color: theme.secondaryColor }} class={`text-xs leading-[18px]  font-normal `}>
                       By continuing, you agree to the
                       {loginTypes.approvals.map((approval, i) => (
                         <span>
