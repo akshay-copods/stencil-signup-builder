@@ -60,7 +60,7 @@ export class SignupComponent {
               </div>
 
               <div class={`flex flex-col ${layout.content.length > 1 ? 'justify-between gap-20' : 'justify-center'}  h-full`}>
-                {brandAssests.content.map(i => {
+                {brandAssests?.content.map(i => {
                   if (i.type === 'STATEMENTS') {
                     return <statement-component data={brandAssests.statements} typography={typography}></statement-component>;
                   }
@@ -71,7 +71,7 @@ export class SignupComponent {
                           <div style={{ backgroundColor: brandAssests.testimonials.styling.backgroundColor }} class=" p-5 rounded-lg">
                             <div class={`flex  gap-6 ${brandAssests.testimonials.styling.position === 'BOTTOM' ? 'flex-col' : 'flex-col-reverse'}  `}>
                               <span style={{ textAlign: brandAssests.testimonials.styling.alignment, color: brandAssests.testimonials.styling.fontColor }} class="  text-xs">
-                                " {content.personQuote} "
+                                " {content?.personQuote} "
                               </span>
                               <div
                                 class={`flex gap-2 items-center w-full ${brandAssests.testimonials.styling.alignment === 'LEFT' ? 'flex-row' : 'flex-row-reverse'} ${
@@ -81,12 +81,12 @@ export class SignupComponent {
                                 <img
                                   style={{ borderRadius: brandAssests.testimonials.styling.imageShape === 'CIRCLE' ? '50%' : '0px' }}
                                   class="w-10 h-10"
-                                  src={content.personImage}
+                                  src={content?.personImage}
                                   alt=""
                                 />
                                 <div>
-                                  <h2 style={{ fontSize: typography.subTitle.fontSize, color: brandAssests.testimonials.styling.fontColor }}>{content.personDetails} </h2>
-                                  <span style={{ fontSize: '14px', color: brandAssests.testimonials.styling.fontColor }}>{content.personDesignation}</span>
+                                  <h2 style={{ fontSize: typography.subTitle.fontSize, color: brandAssests.testimonials.styling.fontColor }}>{content?.personDetails} </h2>
+                                  <span style={{ fontSize: '14px', color: brandAssests.testimonials.styling.fontColor }}>{content?.personDesignation}</span>
                                 </div>
                               </div>
                             </div>
